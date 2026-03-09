@@ -1,0 +1,85 @@
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Companion site for editorial triage and peer review</div>
+    <h1 class="hero-title">Same scaffold, different controllers.</h1>
+    <p class="hero-lead">Across five phases of the COVID-19 pandemic, youth symptom networks preserved a broadly similar modular architecture while the distribution of control shifted from an early stress-centered configuration toward a later cross-domain pattern spanning emotional, cognitive-social, and self-perception/physiological domains.</p>
+    <div class="hero-actions">
+      <a class="button" href="#summary">30-second summary</a>
+      <a class="button alt" href="#phases">Explore the phases</a>
+      <a class="button alt" href="#methods">Methods &amp; robustness</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-pill"><span class="stat-value">14,181</span> participants</div>
+      <div class="stat-pill"><span class="stat-value">47</span> symptoms</div>
+      <div class="stat-pill"><span class="stat-value">5</span> phases</div>
+      <div class="stat-pill"><span class="stat-value">2020–2023</span></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 48px 0 32px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(86, 180, 233, 0.1);
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    max-width: 16ch;
+    margin-bottom: 16px;
+  }
+
+  .hero-lead {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 72ch;
+    margin-bottom: 24px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .stat-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(23, 33, 43, 0.08);
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+
+  .stat-value {
+    font-weight: 800;
+    color: var(--ink);
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding: 32px 0 24px; }
+    .hero-title { max-width: 100%; }
+  }
+</style>
