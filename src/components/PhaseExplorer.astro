@@ -1,0 +1,442 @@
+<section id="phases">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Interactive phase explorer</div>
+        <h2>Click each phase to see what stayed stable and what changed.</h2>
+      </div>
+      <p>The manuscript's core narrative is comparative: the modular scaffold remains broadly conserved, but the pattern of control changes across the pandemic.</p>
+    </div>
+    <div class="panel phase-shell">
+      <div class="phase-nav" id="phaseNav"></div>
+      <div class="phase-body">
+        <div class="phase-info">
+          <div class="phase-badges" id="phaseBadges"></div>
+          <div class="phase-summary" id="phaseSummary"></div>
+          <p class="phase-note" id="phaseNarrative"></p>
+          <div class="phase-columns">
+            <div class="soft-card">
+              <h4>What remains stable</h4>
+              <p id="stableText"></p>
+            </div>
+            <div class="soft-card">
+              <h4>What changes here</h4>
+              <p id="changeText"></p>
+            </div>
+          </div>
+        </div>
+        <div class="phase-figure">
+          <svg id="networkSvg" viewBox="0 0 560 360" width="100%" height="auto" aria-label="Schematic module control network"></svg>
+          <div class="legend">
+            <div class="legend-item"><span class="swatch" style="background: var(--str)"></span>STR · stress response</div>
+            <div class="legend-item"><span class="swatch" style="background: var(--emo)"></span>EMO · emotional regulation</div>
+            <div class="legend-item"><span class="swatch" style="background: var(--csf)"></span>CSF · cognitive &amp; social function</div>
+            <div class="legend-item"><span class="swatch" style="background: var(--spf)"></span>SPF · self-perception &amp; physiological</div>
+          </div>
+          <div class="schematic-note">Schematic view for rapid orientation. Arrow thickness reflects relative control strength between modules.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .phase-shell { padding: 24px; }
+
+  .phase-nav {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .phase-btn {
+    border: 1px solid rgba(23, 33, 43, 0.08);
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--ink);
+    border-radius: var(--radius);
+    padding: 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s ease;
+    font-family: inherit;
+  }
+
+  .phase-btn:hover, .phase-btn.active {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+    border-color: rgba(23, 33, 43, 0.16);
+    background: #fff;
+  }
+
+  .phase-btn .name {
+    font-size: 0.92rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .phase-btn .meta {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .phase-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .phase-info {
+    padding: 20px;
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(23, 33, 43, 0.08);
+  }
+
+  .phase-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .phase-summary {
+    font-size: 1.02rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .phase-note {
+    color: var(--muted);
+    font-size: 0.94rem;
+    margin-bottom: 16px;
+  }
+
+  .phase-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .phase-figure {
+    padding: 20px;
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(23, 33, 43, 0.08);
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(245, 242, 237, 0.85);
+    border: 1px solid rgba(23, 33, 43, 0.06);
+  }
+
+  .swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .schematic-note {
+    margin-top: 12px;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 768px) {
+    .phase-nav { grid-template-columns: 1fr; }
+    .phase-body { grid-template-columns: 1fr; }
+    .phase-columns { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  interface Phase {
+    key: string; label: string; date: string; sample: number;
+    communities: string; regime: string; context: string;
+    summary: string; stable: string; change: string;
+    nodes: string[]; extraNode: string | null;
+    edges: [string, string, number, string][];
+  }
+
+  const phases: Phase[] = [
+    {
+      key: 'early', label: 'Early',
+      date: '2020-04 to 2020-07', sample: 518, communities: '4–5 modules',
+      regime: 'Stress-centered control',
+      context: 'Abrupt restriction, uncertainty, school disruption, and acute threat appraisal.',
+      summary: 'In the earliest phase, stress-related circuitry dominates outgoing control and shapes downstream emotional and cognitive-social modules.',
+      stable: 'The broad modular scaffold remains recognizable, with the network still organized into a small number of coherent symptom communities.',
+      change: 'Stress has the clearest control advantage. This is the cleanest phase for the "acute-response regime" interpretation.',
+      nodes: ['STR','EMO','CSF','SPF'], extraNode: null,
+      edges: [
+        ['STR','EMO',1.0,'Strong outgoing control from stress into emotional regulation.'],
+        ['STR','CSF',0.86,'Stress strongly influences cognitive and social function.'],
+        ['STR','SPF',0.56,'Stress also reaches self-perception and physiological symptoms.'],
+        ['EMO','STR',0.32,'Secondary feedback from emotional to stress domain.']
+      ]
+    },
+    {
+      key: 'first', label: 'First Wave',
+      date: '2020-07 to 2021-01', sample: 2321, communities: '4–5 modules',
+      regime: 'Stress-centered with physiological subcluster',
+      context: 'Sustained disruption and ongoing restriction, with stress still acting as the main organizing force.',
+      summary: 'Stress remains the leading controller, while a small physiological subcluster becomes visible without changing the fixed four-domain interpretation.',
+      stable: 'The same core architecture persists, reinforcing the argument that phase-wise comparison is meaningful on a conserved scaffold.',
+      change: 'Even when communities split visually, the higher-order interpretation remains stable.',
+      nodes: ['STR','EMO','CSF','SPF'], extraNode: 'PHY',
+      edges: [
+        ['STR','EMO',0.96,'Stress continues to dominate emotional symptoms.'],
+        ['STR','CSF',0.78,'Stress retains strong influence over cognitive/social symptoms.'],
+        ['STR','PHY',0.62,'A temporary physiological subcluster appears as a visible recipient of control.'],
+        ['SPF','CSF',0.34,'Cross-domain influence begins to broaden at the margins.']
+      ]
+    },
+    {
+      key: 'second', label: 'Second Wave',
+      date: '2021-01 to 2022-01', sample: 4721, communities: '4–5 modules',
+      regime: 'Beginning redistribution',
+      context: 'The crisis is no longer only acute; control becomes less monopolized by stress alone.',
+      summary: 'The network scaffold remains intact, but the control map begins to distribute more visibly across multiple domains.',
+      stable: 'Community organization remains broadly similar, preserving the paper\'s central scaffold claim.',
+      change: 'This is the transition phase where the shift from dominance to broader governance begins to emerge.',
+      nodes: ['STR','EMO','CSF','SPF'], extraNode: null,
+      edges: [
+        ['STR','EMO',0.82,'Stress still leads, but less exclusively than before.'],
+        ['STR','CSF',0.68,'Control from stress to cognitive/social function moderates.'],
+        ['SPF','EMO',0.52,'Self-perception/physiological symptoms become more active contributors.'],
+        ['CSF','EMO',0.48,'Cognitive/social systems begin to participate in control redistribution.']
+      ]
+    },
+    {
+      key: 'omicron', label: 'Omicron',
+      date: '2022-01 to 2023-01', sample: 4023, communities: '4–5 modules',
+      regime: 'Distributed cross-domain control',
+      context: 'The system reflects chronic adaptation rather than only acute stress response.',
+      summary: 'Control becomes more evenly shared across stress, cognitive-social, and self-perception/physiological domains.',
+      stable: 'The architecture still does not collapse or fragment into a qualitatively different system.',
+      change: 'This phase supports the interpretation of a move toward multi-module governance under prolonged crisis.',
+      nodes: ['STR','EMO','CSF','SPF'], extraNode: null,
+      edges: [
+        ['STR','EMO',0.70,'Stress remains important but no longer acts alone.'],
+        ['SPF','EMO',0.66,'SPF contributes more substantial outgoing control.'],
+        ['CSF','STR',0.54,'Cognitive/social function enters the control map more forcefully.'],
+        ['SPF','CSF',0.58,'Distributed influence links embodied and cognitive-social domains.']
+      ]
+    },
+    {
+      key: 'post', label: 'Post-Omicron',
+      date: '2023-01 to 2024-01', sample: 2598, communities: '4–5 modules',
+      regime: 'Broad multi-module governance',
+      context: 'Formal restrictions ease, but accumulated burden and adaptation continue to shape cross-domain interaction.',
+      summary: 'The later phase shows greater boundary mixing with a broader, more distributed control pattern beyond early stress dominance.',
+      stable: 'A persistent backbone of influential symptoms remains visible, supporting continuity across the whole observation window.',
+      change: 'This is the clearest phase for chronic adaptation, boundary mixing, and integrative leverage.',
+      nodes: ['STR','EMO','CSF','SPF'], extraNode: null,
+      edges: [
+        ['STR','EMO',0.64,'Stress remains part of the control system but is no longer singular.'],
+        ['SPF','EMO',0.72,'SPF is now a strong source of outgoing control.'],
+        ['CSF','STR',0.60,'CSF participates in cross-domain governance more clearly.'],
+        ['CSF','SPF',0.52,'Control spreads across later-phase interfaces rather than one domain.']
+      ]
+    }
+  ];
+
+  const domainConfig: Record<string, { x: number; y: number; color: string }> = {
+    STR: { x: 280, y: 58, color: '#CC79A7' },
+    EMO: { x: 476, y: 180, color: '#E69F00' },
+    CSF: { x: 280, y: 304, color: '#56B4E9' },
+    SPF: { x: 84, y: 180, color: '#009E73' },
+    PHY: { x: 420, y: 82, color: '#9EA33A' }
+  };
+
+  const phaseNav = document.getElementById('phaseNav')!;
+  const phaseBadges = document.getElementById('phaseBadges')!;
+  const phaseSummary = document.getElementById('phaseSummary')!;
+  const phaseNarrative = document.getElementById('phaseNarrative')!;
+  const stableText = document.getElementById('stableText')!;
+  const changeText = document.getElementById('changeText')!;
+  const svg = document.getElementById('networkSvg')! as unknown as SVGSVGElement;
+
+  function makeBadge(label: string, value: string): HTMLElement {
+    const div = document.createElement('div');
+    div.className = 'badge';
+    const span = document.createElement('span');
+    span.textContent = label + ' ';
+    const strong = document.createElement('strong');
+    strong.textContent = value;
+    div.appendChild(span);
+    div.appendChild(strong);
+    return div;
+  }
+
+  function makePhaseBtn(phase: Phase, idx: number): HTMLButtonElement {
+    const btn = document.createElement('button');
+    btn.className = 'phase-btn' + (idx === 0 ? ' active' : '');
+    btn.type = 'button';
+    const nameDiv = document.createElement('div');
+    nameDiv.className = 'name';
+    nameDiv.textContent = phase.label;
+    const metaN = document.createElement('div');
+    metaN.className = 'meta';
+    metaN.textContent = 'n = ' + phase.sample.toLocaleString();
+    const metaR = document.createElement('div');
+    metaR.className = 'meta';
+    metaR.textContent = phase.regime;
+    btn.appendChild(nameDiv);
+    btn.appendChild(metaN);
+    btn.appendChild(metaR);
+    btn.addEventListener('click', () => setPhase(idx));
+    return btn;
+  }
+
+  function createPhaseNav() {
+    phases.forEach((phase, idx) => {
+      phaseNav.appendChild(makePhaseBtn(phase, idx));
+    });
+  }
+
+  function setPhase(idx: number) {
+    [...phaseNav.children].forEach((el, i) => el.classList.toggle('active', i === idx));
+    const phase = phases[idx];
+
+    phaseBadges.replaceChildren(
+      makeBadge('Date:', phase.date),
+      makeBadge('U.S. sample:', phase.sample.toLocaleString()),
+      makeBadge('Communities:', phase.communities),
+      makeBadge('Regime:', phase.regime)
+    );
+    phaseSummary.textContent = phase.summary;
+    phaseNarrative.textContent = phase.context;
+    stableText.textContent = phase.stable;
+    changeText.textContent = phase.change;
+    renderNetwork(phase);
+  }
+
+  function renderNetwork(phase: Phase) {
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    const ns = 'http://www.w3.org/2000/svg';
+
+    // Defs
+    const defs = document.createElementNS(ns, 'defs');
+    const marker = document.createElementNS(ns, 'marker');
+    marker.setAttribute('id', 'arrowhead');
+    marker.setAttribute('markerWidth', '10'); marker.setAttribute('markerHeight', '7');
+    marker.setAttribute('refX', '8'); marker.setAttribute('refY', '3.5');
+    marker.setAttribute('orient', 'auto');
+    const polygon = document.createElementNS(ns, 'polygon');
+    polygon.setAttribute('points', '0 0, 10 3.5, 0 7');
+    polygon.setAttribute('fill', 'rgba(23,33,43,0.55)');
+    marker.appendChild(polygon);
+    defs.appendChild(marker);
+
+    const filter = document.createElementNS(ns, 'filter');
+    filter.setAttribute('id', 'nodeShadow');
+    filter.setAttribute('x', '-50%'); filter.setAttribute('y', '-50%');
+    filter.setAttribute('width', '200%'); filter.setAttribute('height', '200%');
+    const shadow = document.createElementNS(ns, 'feDropShadow');
+    shadow.setAttribute('dx', '0'); shadow.setAttribute('dy', '4');
+    shadow.setAttribute('stdDeviation', '6');
+    shadow.setAttribute('flood-color', 'rgba(18,25,38,0.12)');
+    filter.appendChild(shadow);
+    defs.appendChild(filter);
+    svg.appendChild(defs);
+
+    // Background
+    const bg = document.createElementNS(ns, 'rect');
+    bg.setAttribute('width', '560'); bg.setAttribute('height', '360');
+    bg.setAttribute('rx', '8'); bg.setAttribute('fill', 'rgba(245,242,237,0.65)');
+    svg.appendChild(bg);
+
+    // Guide ring
+    const ring = document.createElementNS(ns, 'circle');
+    ring.setAttribute('cx', '280'); ring.setAttribute('cy', '180'); ring.setAttribute('r', '126');
+    ring.setAttribute('fill', 'none'); ring.setAttribute('stroke', 'rgba(23,33,43,0.08)');
+    ring.setAttribute('stroke-dasharray', '6 8');
+    svg.appendChild(ring);
+
+    // Title
+    const titleEl = document.createElementNS(ns, 'text');
+    titleEl.setAttribute('x', '24'); titleEl.setAttribute('y', '30');
+    titleEl.setAttribute('font-size', '14'); titleEl.setAttribute('font-weight', '700');
+    titleEl.setAttribute('fill', '#17212b');
+    titleEl.textContent = phase.label + ' phase';
+    svg.appendChild(titleEl);
+
+    const subtitleEl = document.createElementNS(ns, 'text');
+    subtitleEl.setAttribute('x', '24'); subtitleEl.setAttribute('y', '48');
+    subtitleEl.setAttribute('font-size', '11'); subtitleEl.setAttribute('fill', '#5b6773');
+    subtitleEl.textContent = phase.regime;
+    svg.appendChild(subtitleEl);
+
+    // Edges
+    phase.edges.forEach(([from, to, w]) => {
+      const a = domainConfig[from]; const b = domainConfig[to];
+      if (!a || !b) return;
+      const path = document.createElementNS(ns, 'path');
+      const mx = (a.x + b.x) / 2; const my = (a.y + b.y) / 2;
+      const dx = b.x - a.x; const dy = b.y - a.y;
+      const norm = Math.hypot(dx, dy) || 1;
+      const cx = mx - (dy / norm) * 42; const cy = my + (dx / norm) * 42;
+      path.setAttribute('d', `M ${a.x} ${a.y} Q ${cx} ${cy} ${b.x} ${b.y}`);
+      path.setAttribute('fill', 'none');
+      path.setAttribute('stroke', 'rgba(23,33,43,0.5)');
+      path.setAttribute('stroke-width', String(2 + 7 * w));
+      path.setAttribute('stroke-linecap', 'round');
+      path.setAttribute('opacity', String(0.2 + 0.7 * w));
+      path.setAttribute('marker-end', 'url(#arrowhead)');
+      svg.appendChild(path);
+    });
+
+    // Nodes
+    const nodesToDraw = phase.extraNode ? [...phase.nodes, phase.extraNode] : [...phase.nodes];
+    nodesToDraw.forEach(key => {
+      const n = domainConfig[key]; if (!n) return;
+      const isMain = key !== 'PHY';
+      const r = isMain ? 28 : 22;
+
+      const halo = document.createElementNS(ns, 'circle');
+      halo.setAttribute('cx', String(n.x)); halo.setAttribute('cy', String(n.y));
+      halo.setAttribute('r', String(r + 10));
+      halo.setAttribute('fill', n.color + '22');
+      svg.appendChild(halo);
+
+      const circle = document.createElementNS(ns, 'circle');
+      circle.setAttribute('cx', String(n.x)); circle.setAttribute('cy', String(n.y));
+      circle.setAttribute('r', String(r));
+      circle.setAttribute('fill', n.color);
+      circle.setAttribute('filter', 'url(#nodeShadow)');
+      circle.setAttribute('stroke', 'rgba(255,255,255,0.9)');
+      circle.setAttribute('stroke-width', '2');
+      svg.appendChild(circle);
+
+      const label = document.createElementNS(ns, 'text');
+      label.setAttribute('x', String(n.x)); label.setAttribute('y', String(n.y + 5));
+      label.setAttribute('font-size', isMain ? '14' : '12');
+      label.setAttribute('font-weight', '800');
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('fill', '#ffffff');
+      label.textContent = key;
+      svg.appendChild(label);
+    });
+  }
+
+  createPhaseNav();
+  setPhase(0);
+</script>
