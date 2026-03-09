@@ -1,0 +1,41 @@
+<section id="fit">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Why this matters to an editor</div>
+        <h2>Review-worthiness at a glance.</h2>
+      </div>
+      <p>The site should help the editor see contribution, rigor, and significance quickly without re-reading the full manuscript.</p>
+    </div>
+    <div class="fit-grid">
+      <div class="panel fit-card">
+        <h3>Substantive value</h3>
+        <p>The study addresses youth mental health under a prolonged societal stressor and reframes the question from symptom prevalence to system organization, which gives the paper conceptual reach beyond pandemic period description.</p>
+      </div>
+      <div class="panel fit-card">
+        <h3>Methodological value</h3>
+        <p>The paper contributes an interpretable module-control framework, exact dominating-set enumeration, and a direct comparison of metric robustness that is highly relevant for network-based mental-health research.</p>
+      </div>
+      <div class="panel fit-card">
+        <h3>Translational value</h3>
+        <p>The manuscript suggests that phase-tailored intervention strategies may be more appropriate than a fixed response, because control is concentrated early but becomes more distributed as crisis becomes chronic.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .fit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .fit-card { padding: 22px; }
+  .fit-card h3 { font-size: 1.02rem; margin-bottom: 10px; }
+  .fit-card p { color: var(--muted); font-size: 0.92rem; margin-bottom: 0; }
+
+  @media (max-width: 768px) {
+    .fit-grid { grid-template-columns: 1fr; }
+  }
+</style>

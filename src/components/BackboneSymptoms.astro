@@ -1,0 +1,245 @@
+<section id="backbone">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Backbone symptoms and external context</div>
+        <h2>Controlled migration around a persistent core.</h2>
+      </div>
+      <p>The paper's node-level contribution becomes clear when stable backbone controllers are separated from phase-sensitive liaison nodes.</p>
+    </div>
+    <div class="backbone-grid">
+      <div class="panel backbone-panel">
+        <h3>Backbone controllers</h3>
+        <p class="backbone-intro">Click a symptom below. These nodes remain relatively prominent across phases and help explain why the network preserves continuity while reallocating cross-module control.</p>
+        <div class="node-list" id="nodeList"></div>
+        <div class="node-detail" id="nodeDetail">
+          <p class="node-placeholder">Select a symptom above to see details.</p>
+        </div>
+      </div>
+      <div class="panel backbone-panel">
+        <h3>Macro context without overclaiming</h3>
+        <p class="backbone-intro">The manuscript's exploratory macro analysis situates internal network changes within policy and epidemiological time structure, while explicitly avoiding causal inference.</p>
+        <div class="context-stories">
+          <div class="story-card">
+            <h4>Policy structure appears more proximal than case counts alone</h4>
+            <p>Across the strongest lagged associations, policy variables were more overrepresented than case counts or deaths, suggesting that the organization of daily life may track youth symptoms more closely than epidemiological burden by itself.</p>
+          </div>
+          <div class="story-card">
+            <h4>Illustrative rather than deterministic examples</h4>
+            <p>Fear &amp; Anxiety aligns with movement restrictions at a longer lag, Emotional Resilience shows a short-lag relationship with travel controls, and cognitive/self-regulatory items often align with home-confinement structure.</p>
+          </div>
+          <div class="story-card">
+            <h4>Language discipline</h4>
+            <p>The site uses language such as "tracked," "aligned with," and "provided context for," rather than causal phrases. A reviewer will trust the site more when the inferential boundary is visible at every step.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .backbone-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .backbone-panel { padding: 24px; }
+
+  .backbone-intro {
+    color: var(--muted);
+    font-size: 0.94rem;
+    margin-bottom: 16px;
+  }
+
+  .node-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .node-chip {
+    border: 1px solid rgba(23, 33, 43, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--ink);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+    font-family: inherit;
+  }
+
+  .node-chip:hover, .node-chip.active {
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .node-detail {
+    padding: 18px;
+    border-radius: var(--radius);
+    background: rgba(245, 242, 237, 0.85);
+    border: 1px solid rgba(23, 33, 43, 0.08);
+    min-height: 180px;
+  }
+
+  .node-detail h3 {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+
+  .node-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .node-tag {
+    display: inline-flex;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    background: rgba(23, 33, 43, 0.06);
+    color: var(--muted);
+  }
+
+  .node-placeholder {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin: 0;
+  }
+
+  .node-detail p {
+    font-size: 0.92rem;
+    color: var(--muted);
+  }
+
+  .context-stories {
+    display: grid;
+    gap: 10px;
+  }
+
+  .story-card {
+    padding: 14px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(23, 33, 43, 0.08);
+    background: rgba(255, 255, 255, 0.88);
+  }
+
+  .story-card h4 {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+
+  .story-card p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .backbone-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  interface NodeInfo {
+    domain: string;
+    role: string;
+    why: string;
+    use: string;
+  }
+
+  const nodeDetails: Record<string, NodeInfo> = {
+    'Fear & Anxiety': {
+      domain: 'STR',
+      role: 'Backbone controller',
+      why: 'This symptom repeatedly remains influential across phases and anchors the claim that stable control nodes can persist even while system-level control reallocates around them.',
+      use: 'Present as a persistent stress-linked controller that helps explain continuity under prolonged disruption.'
+    },
+    'Anger & Irritability': {
+      domain: 'STR/EMO',
+      role: 'Backbone controller',
+      why: 'It sits near major emotional and stress interfaces, making it useful for showing why early stress dominance can continue to matter later even when control becomes more distributed.',
+      use: 'Present as a cross-boundary symptom that keeps affective pressure connected to wider system behavior.'
+    },
+    'Sadness, Distress or Hopelessness': {
+      domain: 'EMO',
+      role: 'Backbone controller',
+      why: 'Its repeated prominence shows that emotional burden remains central even when the locus of outgoing control changes across phases.',
+      use: 'Use this item to connect the module story to clinically legible emotional outcomes.'
+    },
+    'Focus & Concentration': {
+      domain: 'CSF',
+      role: 'Backbone controller',
+      why: 'This symptom helps explain why later phases are not only about mood but also about cognitive efficiency, attention, and day-to-day functioning under chronic disruption.',
+      use: 'Present as evidence that cognitive/social function becomes an increasingly relevant control participant over time.'
+    },
+    'Emotional Resilience': {
+      domain: 'EMO / adaptive',
+      role: 'Backbone controller',
+      why: 'Its persistent role makes the system story richer by indicating that control is not only concentrated in overtly negative symptoms but also at adaptive-regulatory interfaces.',
+      use: 'Use this as a bridge between risk-oriented interpretation and a broader regulation framework.'
+    }
+  };
+
+  const nodeList = document.getElementById('nodeList')!;
+  const nodeDetail = document.getElementById('nodeDetail')!;
+  const names = Object.keys(nodeDetails);
+
+  function setNode(name: string) {
+    [...nodeList.children].forEach(el => {
+      el.classList.toggle('active', el.textContent === name);
+    });
+    const node = nodeDetails[name];
+
+    nodeDetail.replaceChildren();
+
+    const h3 = document.createElement('h3');
+    h3.textContent = name;
+    nodeDetail.appendChild(h3);
+
+    const tags = document.createElement('div');
+    tags.className = 'node-tags';
+    const domainTag = document.createElement('span');
+    domainTag.className = 'node-tag';
+    domainTag.textContent = 'Domain: ' + node.domain;
+    const roleTag = document.createElement('span');
+    roleTag.className = 'node-tag';
+    roleTag.textContent = 'Role: ' + node.role;
+    tags.appendChild(domainTag);
+    tags.appendChild(roleTag);
+    nodeDetail.appendChild(tags);
+
+    const whyP = document.createElement('p');
+    const whyStrong = document.createElement('strong');
+    whyStrong.textContent = 'Why it matters: ';
+    whyP.appendChild(whyStrong);
+    whyP.appendChild(document.createTextNode(node.why));
+    nodeDetail.appendChild(whyP);
+
+    const useP = document.createElement('p');
+    useP.style.marginBottom = '0';
+    const useStrong = document.createElement('strong');
+    useStrong.textContent = 'Interpretation: ';
+    useP.appendChild(useStrong);
+    useP.appendChild(document.createTextNode(node.use));
+    nodeDetail.appendChild(useP);
+  }
+
+  names.forEach((name, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'node-chip' + (idx === 0 ? ' active' : '');
+    btn.type = 'button';
+    btn.textContent = name;
+    btn.addEventListener('click', () => setNode(name));
+    nodeList.appendChild(btn);
+  });
+
+  setNode(names[0]);
+</script>

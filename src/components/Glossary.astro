@@ -1,0 +1,57 @@
+<section id="glossary">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Glossary for fast reading</div>
+        <h2>Technical language translated, not removed.</h2>
+      </div>
+      <p>A short glossary reduces editorial friction for terms central to the manuscript but not yet familiar to all reviewers.</p>
+    </div>
+    <div class="glossary-grid">
+      <div class="panel glossary-card">
+        <h4>Mesoscale scaffold</h4>
+        <p>The relatively stable community structure of the symptom network. Here, it refers to the broad modular organization that persists even when influence shifts across phases.</p>
+      </div>
+      <div class="panel glossary-card">
+        <h4>Minimum dominating set (MDS)</h4>
+        <p>The smallest set of nodes that covers the whole graph directly or through neighbors. It provides a concrete way to define which symptoms can serve as drivers in the network.</p>
+      </div>
+      <div class="panel glossary-card">
+        <h4>Control frequency (CF)</h4>
+        <p>The proportion of exact minimum dominating sets in which a symptom appears. A high CF means the symptom repeatedly participates in minimal driver solutions.</p>
+      </div>
+      <div class="panel glossary-card">
+        <h4>Average control frequency (ACF)</h4>
+        <p>The average normalized control frequency within a module or domain. Informative descriptively, but less stable under case loss than AMCS.</p>
+      </div>
+      <div class="panel glossary-card">
+        <h4>Average module control strength (AMCS)</h4>
+        <p>A directed summary of how strongly one symptom module dominates another. The manuscript's key mesoscale comparison metric and the most important control graphic to foreground.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+
+  .glossary-card {
+    padding: 18px;
+    min-height: 170px;
+  }
+
+  .glossary-card h4 { font-size: 0.9rem; margin-bottom: 8px; }
+  .glossary-card p { color: var(--muted); font-size: 0.86rem; margin-bottom: 0; }
+
+  @media (max-width: 1024px) {
+    .glossary-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .glossary-grid { grid-template-columns: 1fr; }
+  }
+</style>

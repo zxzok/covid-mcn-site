@@ -1,0 +1,75 @@
+<section id="limitations">
+  <div class="container">
+    <details class="panel limit-box">
+      <summary>What this paper does not claim</summary>
+      <div class="limit-content">
+        <div class="limit-item">
+          <h4>Not within-person longitudinal</h4>
+          <p>The study uses repeated cross-sections, not a cohort tracked over time. Phase comparisons describe population-level shifts, not individual trajectories.</p>
+        </div>
+        <div class="limit-item">
+          <h4>Network edges are not causal directions</h4>
+          <p>Edges represent conditional dependencies estimated from cross-sectional data. They do not imply that one symptom causes another.</p>
+        </div>
+        <div class="limit-item">
+          <h4>Policy associations are exploratory</h4>
+          <p>The macro-level analyses linking symptoms to policy variables are hypothesis-generating, not confirmatory. Language is deliberately correlational.</p>
+        </div>
+        <div class="limit-item">
+          <h4>Domain mapping is interpretive</h4>
+          <p>The four-domain alignment is a fixed interpretive layer chosen for cross-phase comparability, not an ontological claim about the only true structure of youth psychopathology.</p>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<style>
+  #limitations { padding-top: 0; }
+
+  .limit-box {
+    padding: 0 24px;
+    cursor: default;
+  }
+
+  .limit-box summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 20px 0;
+    font-weight: 700;
+    font-size: 1.02rem;
+    color: var(--ink);
+  }
+
+  .limit-box summary::-webkit-details-marker { display: none; }
+
+  .limit-box summary::before {
+    content: '+ ';
+    color: var(--muted);
+  }
+
+  .limit-box[open] summary::before {
+    content: '- ';
+  }
+
+  .limit-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding-bottom: 20px;
+  }
+
+  .limit-item {
+    padding: 14px;
+    border-radius: var(--radius);
+    background: rgba(245, 242, 237, 0.7);
+    border: 1px solid rgba(23, 33, 43, 0.06);
+  }
+
+  .limit-item h4 { font-size: 0.88rem; margin-bottom: 6px; }
+  .limit-item p { color: var(--muted); font-size: 0.86rem; margin-bottom: 0; }
+
+  @media (max-width: 768px) {
+    .limit-content { grid-template-columns: 1fr; }
+  }
+</style>

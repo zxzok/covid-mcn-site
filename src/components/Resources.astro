@@ -1,0 +1,77 @@
+<section id="resources">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Companion assets</div>
+        <h2>What to open next.</h2>
+      </div>
+    </div>
+    <div class="resource-grid">
+      <a class="panel resource-link" href="#">
+        <div>
+          <strong>Main manuscript</strong>
+          <span>Full article PDF for formal review reading.</span>
+        </div>
+        <span class="resource-arrow">PDF &rarr;</span>
+      </a>
+      <a class="panel resource-link" href="#">
+        <div>
+          <strong>Supplementary materials</strong>
+          <span>Penalty sensitivity, variable mapping, and additional robustness context.</span>
+        </div>
+        <span class="resource-arrow">PDF &rarr;</span>
+      </a>
+      <a class="panel resource-link" href="https://github.com/realfty/covid-mcn">
+        <div>
+          <strong>Analysis code</strong>
+          <span>Full analysis pipeline on GitHub.</span>
+        </div>
+        <span class="resource-arrow">GitHub &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .resource-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    padding: 20px;
+    color: var(--ink);
+    transition: transform 0.15s ease;
+  }
+
+  .resource-link:hover {
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+
+  .resource-link strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.95rem;
+  }
+
+  .resource-link span {
+    color: var(--muted);
+    font-size: 0.86rem;
+  }
+
+  .resource-arrow {
+    flex-shrink: 0;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .resource-grid { grid-template-columns: 1fr; }
+  }
+</style>
