@@ -1,5 +1,5 @@
 ---
-// Single-file academic data-journalism redesign — dark theme
+// Single-file academic data-journalism redesign — dark theme + SVG sub-figures
 ---
 <html lang="en">
 <head>
@@ -46,222 +46,138 @@
     button { font-family: inherit; cursor: pointer; }
 
     .wrap { width: min(1080px, calc(100vw - 48px)); margin: 0 auto; }
-    .sec-label {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 0.72rem; font-weight: 500;
-      text-transform: uppercase; letter-spacing: 0.18em;
-      color: var(--accent); margin-bottom: 12px;
-    }
+    .sec-label { font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 12px; }
     .sec-title { font-size: clamp(1.6rem, 3.2vw, 2.4rem); margin-bottom: 12px; }
     .sec-sub { color: var(--muted); font-size: clamp(0.92rem, 1vw, 1.02rem); max-width: 60ch; line-height: 1.7; }
 
     /* ── Nav ── */
-    .site-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(13,27,42,0.85);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid var(--border);
-    }
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,27,42,0.85); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid var(--border); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
     .nav-brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 500; font-size: 0.88rem; }
-    .nav-mark {
-      width: 30px; height: 30px; border-radius: 7px; background: var(--accent);
-      display: grid; place-items: center; font-weight: 500; font-size: 0.68rem;
-      color: var(--bg); letter-spacing: 0.04em; flex-shrink: 0;
-    }
+    .nav-mark { width: 30px; height: 30px; border-radius: 7px; background: var(--accent); display: grid; place-items: center; font-weight: 500; font-size: 0.68rem; color: var(--bg); flex-shrink: 0; }
     .nav-links { display: flex; gap: 4px; }
-    .nav-link {
-      padding: 6px 14px; border-radius: 6px; color: var(--muted);
-      font-size: 0.84rem; font-weight: 400; transition: all 0.2s; text-decoration: none;
-    }
+    .nav-link { padding: 6px 14px; border-radius: 6px; color: var(--muted); font-size: 0.84rem; font-weight: 400; transition: all 0.2s; text-decoration: none; }
     .nav-link:hover, .nav-link.active { color: var(--text); background: rgba(245,166,35,0.08); text-decoration: none; }
     .nav-link.active { color: var(--accent); }
 
     /* ── Hero ── */
-    .hero {
-      min-height: 100vh; display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center;
-      padding: 80px 24px 40px; position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: ''; position: absolute; top: -40%; left: -20%; width: 140%; height: 140%;
-      background: radial-gradient(ellipse at 50% 30%, rgba(245,166,35,0.06) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .hero-overline {
-      font-size: 0.76rem; font-weight: 500; text-transform: uppercase;
-      letter-spacing: 0.22em; color: var(--accent); margin-bottom: 28px;
-      opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
-    }
-    .hero-title {
-      font-size: clamp(2.8rem, 7vw, 5rem); line-height: 1.06; margin-bottom: 28px;
-      opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
-    }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 80px 24px 40px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -40%; left: -20%; width: 140%; height: 140%; background: radial-gradient(ellipse at 50% 30%, rgba(245,166,35,0.06) 0%, transparent 60%); pointer-events: none; }
+    .hero-overline { font-size: 0.76rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.22em; color: var(--accent); margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
+    .hero-title { font-size: clamp(2.8rem, 7vw, 5rem); line-height: 1.06; margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
     .hero-title .amber { color: var(--accent); }
-    .hero-sub {
-      font-size: clamp(1rem, 1.2vw, 1.12rem); color: var(--muted);
-      max-width: 56ch; margin-bottom: 48px; line-height: 1.72;
-      opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
-    }
-    .hero-stats {
-      display: flex; gap: clamp(24px, 5vw, 56px); margin-bottom: 48px;
-      opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
-    }
+    .hero-sub { font-size: clamp(1rem, 1.2vw, 1.12rem); color: var(--muted); max-width: 56ch; margin-bottom: 48px; line-height: 1.72; opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
+    .hero-stats { display: flex; gap: clamp(24px, 5vw, 56px); margin-bottom: 48px; opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
     .h-stat { text-align: center; }
     .h-stat-num { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.1; }
     .h-stat-label { font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-top: 6px; }
-    .hero-domains {
-      display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 48px;
-      opacity: 0; animation: fadeUp 0.8s 1.0s forwards;
-    }
+    .hero-domains { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 48px; opacity: 0; animation: fadeUp 0.8s 1.0s forwards; }
     .hdot { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--muted); }
     .hdot i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
     .scroll-arrow { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); opacity: 0; animation: fadeUp 0.8s 1.2s forwards; }
     .scroll-arrow span { display: block; width: 20px; height: 20px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); animation: bounce 2s infinite; }
-
     @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes bounce { 0%,100% { transform: rotate(45deg) translateY(0); } 50% { transform: rotate(45deg) translateY(8px); } }
 
-    /* ── Summary ── */
-    #summary { padding: clamp(60px, 8vw, 100px) 0; }
-    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 36px; }
-    .s-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-left: 3px solid var(--accent); border-radius: var(--radius);
-      padding: clamp(20px, 2.5vw, 28px); position: relative; overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+    /* ── Shared figures ── */
+    .fig-wrap { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--card); }
+    .fig-wrap img { width: 100%; display: block; }
+    .fig-cap { padding: 10px 14px; font-size: 0.76rem; color: var(--muted); border-top: 1px solid var(--border); }
+    /* SVG figures need light bg */
+    .svg-fig { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: #f8f9fb; padding: 8px; }
+    .svg-fig img { width: 100%; display: block; border-radius: 6px; }
+    .svg-fig .fig-cap { background: var(--card); border-top: 1px solid var(--border); margin: 8px -8px -8px; padding: 10px 14px; border-radius: 0; }
+
+    /* ── Cards ── */
+    .s-card { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: clamp(20px, 2.5vw, 28px); position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
     .s-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
-    .s-card-num {
-      position: absolute; top: -8px; right: 12px;
-      font-family: 'DM Serif Display', serif; font-size: 4rem;
-      color: var(--accent); opacity: 0.07; line-height: 1; pointer-events: none;
-    }
+    .s-card-num { position: absolute; top: -8px; right: 12px; font-family: 'DM Serif Display', serif; font-size: 4rem; color: var(--accent); opacity: 0.07; line-height: 1; pointer-events: none; }
     .s-card h4 { font-size: clamp(1rem, 1.1vw, 1.12rem); margin-bottom: 8px; }
     .s-card p { font-size: clamp(0.86rem, 0.92vw, 0.94rem); color: var(--muted); line-height: 1.65; }
 
-    .fig-wrap { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--card); margin-top: 20px; }
-    .fig-wrap img { width: 100%; display: block; }
-    .fig-cap { padding: 10px 14px; font-size: 0.76rem; color: var(--muted); border-top: 1px solid var(--border); }
+    /* ── Grid layouts ── */
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .g12 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 3vw, 32px); align-items: start; }
 
-    /* ── Phases ── */
-    #phases { padding: clamp(60px, 8vw, 100px) 0; }
+    /* ── Sections ── */
+    .sec { padding: clamp(60px, 8vw, 100px) 0; }
+
+    /* ── Phase timeline ── */
     .timeline { display: flex; align-items: center; justify-content: space-between; position: relative; margin: 36px 0 32px; padding: 0 20px; }
     .timeline::before { content: ''; position: absolute; top: 50%; left: 20px; right: 20px; height: 2px; background: var(--border); transform: translateY(-50%); }
-    .tl-node {
-      position: relative; z-index: 1; background: none; border: 2px solid var(--muted);
-      width: 44px; height: 44px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: all 0.3s; color: var(--muted);
-      font-size: 0.72rem; font-weight: 500;
-    }
+    .tl-node { position: relative; z-index: 1; background: none; border: 2px solid var(--muted); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; color: var(--muted); font-size: 0.72rem; font-weight: 500; }
     .tl-node.active { background: var(--accent); border-color: var(--accent); color: var(--bg); box-shadow: 0 0 20px rgba(245,166,35,0.25); }
     .tl-node:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
     .tl-label { position: absolute; top: calc(100% + 8px); white-space: nowrap; font-size: 0.72rem; color: var(--muted); transition: color 0.3s; }
     .tl-node.active .tl-label { color: var(--accent); font-weight: 500; }
     .tl-date { position: absolute; bottom: calc(100% + 6px); white-space: nowrap; font-size: 0.64rem; color: var(--muted); opacity: 0.6; }
 
-    .phase-body { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 3vw, 32px); margin-top: 40px; }
-    .phase-info-panel { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: clamp(18px, 2.5vw, 28px); }
-    .phase-regime {
-      display: inline-block; font-size: 0.72rem; font-weight: 500; text-transform: uppercase;
-      letter-spacing: 0.12em; color: var(--accent); padding: 4px 10px;
-      border: 1px solid rgba(245,166,35,0.25); border-radius: 999px; margin-bottom: 12px;
-    }
-    .phase-headline { font-size: clamp(1.02rem, 1.2vw, 1.18rem); margin-bottom: 10px; line-height: 1.35; }
-    .phase-ctx { font-size: 0.9rem; color: var(--muted); margin-bottom: 20px; }
-    .sc-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .sc-box { background: rgba(13,27,42,0.6); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
-    .sc-box h5 { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.76rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
-    .sc-box p { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
-    .phase-fig-area { display: flex; flex-direction: column; gap: 14px; }
-    .phase-fig-transition { transition: opacity 0.4s ease; }
-    .phase-fig-transition.fading { opacity: 0.3; }
+    .info-panel { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: clamp(18px, 2.5vw, 28px); }
+    .pill-tag { display: inline-block; font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); padding: 4px 10px; border: 1px solid rgba(245,166,35,0.25); border-radius: 999px; margin-bottom: 12px; }
     .p-badge { font-size: 0.74rem; padding: 4px 10px; border-radius: 999px; background: rgba(245,166,35,0.08); border: 1px solid rgba(245,166,35,0.15); color: var(--muted); display: inline-block; margin-right: 6px; margin-bottom: 8px; }
     .p-badge strong { color: var(--text); font-weight: 500; }
-
+    .sc-box { background: rgba(13,27,42,0.6); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+    .sc-box h5 { font-size: 0.76rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+    .sc-box p { font-size: 0.86rem; color: var(--muted); line-height: 1.55; }
+    .phase-fig-transition { transition: opacity 0.4s ease; }
+    .phase-fig-transition.fading { opacity: 0.3; }
     .svg-box { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--card); }
 
     /* ── Backbone ── */
-    #backbone { padding: clamp(60px, 8vw, 100px) 0; }
-    .bb-grid { display: grid; grid-template-columns: 240px 1fr; gap: clamp(16px, 2vw, 24px); margin-top: 36px; }
-    .bb-pills { display: flex; flex-direction: column; gap: 6px; }
-    .bb-pill {
-      background: var(--card); border: 1px solid var(--border); border-radius: 999px;
-      padding: 10px 18px; font-size: 0.86rem; color: var(--muted); text-align: left; transition: all 0.25s;
-    }
+    .bb-pill { background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 10px 18px; font-size: 0.86rem; color: var(--muted); text-align: left; transition: all 0.25s; }
     .bb-pill:hover { border-color: var(--accent); color: var(--text); }
     .bb-pill.active { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 500; }
-    .bb-detail { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: clamp(18px, 2.5vw, 28px); min-height: 200px; }
+    .bb-detail { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: clamp(18px, 2.5vw, 28px); min-height: 180px; }
     .bb-tag { display: inline-block; font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); margin-right: 6px; margin-bottom: 12px; }
     .bb-detail h4 { font-size: clamp(1.05rem, 1.2vw, 1.2rem); margin-bottom: 12px; }
     .bb-detail p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin-bottom: 10px; }
     .bb-detail p strong { color: var(--text); font-weight: 500; }
-    .macro-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 24px; }
-    .macro-card {
-      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: clamp(16px, 2vw, 22px); display: flex; gap: 12px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+    .macro-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: clamp(16px, 2vw, 22px); display: flex; gap: 12px; transition: transform 0.3s, box-shadow 0.3s; }
     .macro-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
     .macro-icon { width: 4px; border-radius: 2px; flex-shrink: 0; }
-    .macro-card h5 { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.88rem; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+    .macro-card h5 { font-size: 0.88rem; font-weight: 500; color: var(--text); margin-bottom: 6px; }
     .macro-card p { font-size: 0.84rem; color: var(--muted); line-height: 1.55; }
 
     /* ── Methods ── */
-    #methods { padding: clamp(60px, 8vw, 100px) 0; }
-    .methods-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 3vw, 32px); margin-top: 36px; }
     .pipeline { position: relative; padding-left: 28px; }
     .pipeline::before { content: ''; position: absolute; left: 15px; top: 22px; bottom: 22px; width: 2px; background: var(--border); }
     .pipe-step { display: flex; gap: 16px; padding: 14px 0; position: relative; }
     .pipe-num { width: 30px; height: 30px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; font-size: 0.72rem; font-weight: 500; color: var(--bg); flex-shrink: 0; position: relative; z-index: 1; margin-left: -28px; }
-    .pipe-step h5 { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.92rem; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+    .pipe-step h5 { font-size: 0.92rem; font-weight: 500; color: var(--text); margin-bottom: 4px; }
     .pipe-step p { font-size: 0.86rem; color: var(--muted); line-height: 1.6; }
-    .methods-right { display: flex; flex-direction: column; gap: 16px; }
+
+    /* ── Robustness bars ── */
     .rob-panel { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: clamp(18px, 2.5vw, 26px); }
     .rob-panel h4 { font-size: clamp(1rem, 1.1vw, 1.1rem); margin-bottom: 4px; }
     .rob-sub { font-size: 0.72rem; color: var(--muted); margin-bottom: 18px; }
-    .rob-bars { display: flex; flex-direction: column; gap: 14px; }
-    .rob-row { display: grid; grid-template-columns: 68px 1fr 52px; gap: 10px; align-items: center; }
+    .rob-row { display: grid; grid-template-columns: 68px 1fr 52px; gap: 10px; align-items: center; margin-bottom: 12px; }
     .rob-label { font-size: 0.8rem; font-weight: 500; }
     .rob-track { height: 10px; border-radius: 999px; background: rgba(30,48,72,0.6); overflow: hidden; }
     .rob-fill { height: 100%; border-radius: 999px; width: 0; transition: width 1.2s cubic-bezier(0.22,1,0.36,1); }
-    .rob-fill.green { background: var(--spf); }
-    .rob-fill.yellow { background: var(--accent); }
-    .rob-fill.red { background: var(--str); }
+    .rob-fill.green { background: var(--spf); } .rob-fill.yellow { background: var(--accent); } .rob-fill.red { background: var(--str); }
     .rob-val { font-size: 0.82rem; font-weight: 500; text-align: right; }
-    .rob-val.green { color: var(--spf); }
-    .rob-val.yellow { color: var(--accent); }
-    .rob-val.red { color: var(--str); }
+    .rob-val.green { color: var(--spf); } .rob-val.yellow { color: var(--accent); } .rob-val.red { color: var(--str); }
     .rob-note { font-size: 0.84rem; color: var(--muted); margin-top: 14px; line-height: 1.55; }
-    .ev-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .ev-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: clamp(14px, 1.5vw, 18px); transition: transform 0.3s, box-shadow 0.3s; }
     .ev-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
-    .ev-card h5 { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.84rem; font-weight: 500; margin-bottom: 4px; }
+    .ev-card h5 { font-size: 0.84rem; font-weight: 500; margin-bottom: 4px; }
     .ev-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
 
     /* ── Significance ── */
-    #significance { padding: clamp(60px, 8vw, 100px) 0; }
-    .sig-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 36px; }
-    .sig-card {
-      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: clamp(20px, 2.5vw, 28px); border-top: 3px solid var(--accent);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+    .sig-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: clamp(20px, 2.5vw, 28px); border-top: 3px solid var(--accent); transition: transform 0.3s, box-shadow 0.3s; }
     .sig-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
     .sig-card:nth-child(1) { border-top-color: var(--spf); }
     .sig-card:nth-child(2) { border-top-color: var(--csf); }
     .sig-card:nth-child(3) { border-top-color: var(--emo); }
-    .sig-cat { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.68rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.16em; color: var(--accent); margin-bottom: 12px; }
+    .sig-cat { font-size: 0.68rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.16em; color: var(--accent); margin-bottom: 12px; }
     .sig-card:nth-child(1) .sig-cat { color: var(--spf); }
     .sig-card:nth-child(2) .sig-cat { color: var(--csf); }
     .sig-card:nth-child(3) .sig-cat { color: var(--emo); }
     .sig-card h4 { font-size: clamp(1rem, 1.1vw, 1.12rem); margin-bottom: 10px; }
     .sig-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
 
-    .accord-wrap { margin-top: 40px; }
-    .accord-title { font-size: clamp(1.1rem, 1.3vw, 1.3rem); margin-bottom: 16px; }
+    /* ── Accordion ── */
     .accord-item { border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 8px; overflow: hidden; background: var(--card); }
     .accord-trigger { width: 100%; background: none; border: none; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; color: var(--text); font-size: 0.92rem; font-weight: 500; text-align: left; transition: color 0.2s; }
     .accord-trigger:hover { color: var(--accent); }
@@ -273,19 +189,12 @@
 
     /* ── Footer ── */
     .site-footer { background: var(--footer-bg); padding: clamp(48px, 6vw, 80px) 0 40px; border-top: 1px solid var(--border); }
-    .footer-label { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 20px; }
-    .glossary-dl { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 48px; }
+    .footer-label { font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 20px; }
     .gl-entry { background: rgba(22,34,54,0.5); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; }
     .gl-entry dt { font-family: 'DM Serif Display', serif; font-size: 0.96rem; margin-bottom: 6px; }
-    .gl-entry dt .tag { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.64rem; font-weight: 500; color: var(--muted); background: rgba(74,96,128,0.2); padding: 2px 7px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
+    .gl-entry dt .tag { font-size: 0.64rem; font-weight: 500; color: var(--muted); background: rgba(74,96,128,0.2); padding: 2px 7px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
     .gl-entry dd { font-size: 0.84rem; color: var(--muted); line-height: 1.55; }
-    .res-btns { display: flex; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
-    .res-btn {
-      display: flex; align-items: center; gap: 12px; padding: 16px 24px;
-      border: 1px solid var(--border); border-radius: var(--radius);
-      color: var(--text); text-decoration: none; font-size: 0.9rem; flex: 1; min-width: 180px;
-      transition: all 0.25s;
-    }
+    .res-btn { display: flex; align-items: center; gap: 12px; padding: 16px 24px; border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); text-decoration: none; font-size: 0.9rem; flex: 1; min-width: 180px; transition: all 0.25s; }
     .res-btn:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); text-decoration: none; }
     .res-btn-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(245,166,35,0.1); display: grid; place-items: center; font-size: 0.7rem; font-weight: 500; color: var(--accent); flex-shrink: 0; }
     .res-btn-text span { display: block; font-size: 0.78rem; color: var(--muted); }
@@ -301,25 +210,22 @@
     .stagger.visible > *:nth-child(4) { transition-delay: 0.18s; opacity: 1; transform: none; }
     .stagger.visible > *:nth-child(5) { transition-delay: 0.24s; opacity: 1; transform: none; }
 
+    /* ── Utility ── */
+    .mt16 { margin-top: 16px; } .mt24 { margin-top: 24px; } .mt36 { margin-top: 36px; }
+    .gap8 { gap: 8px; } .gap12 { gap: 12px; } .gap16 { gap: 16px; }
+    .flex-col { display: flex; flex-direction: column; }
+
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hero-stats { gap: 20px; flex-wrap: wrap; justify-content: center; }
-      .card-grid { grid-template-columns: 1fr; }
-      .timeline { overflow-x: auto; justify-content: flex-start; gap: 0; padding-bottom: 32px; -webkit-overflow-scrolling: touch; }
+      .g2, .g12 { grid-template-columns: 1fr; }
+      .g3 { grid-template-columns: 1fr; }
+      .timeline { overflow-x: auto; justify-content: flex-start; padding-bottom: 32px; -webkit-overflow-scrolling: touch; }
       .timeline::before { display: none; }
       .tl-node { flex-shrink: 0; margin: 0 16px; }
-      .phase-body { grid-template-columns: 1fr; }
-      .sc-columns { grid-template-columns: 1fr; }
-      .bb-grid { grid-template-columns: 1fr; }
-      .bb-pills { flex-direction: row; flex-wrap: wrap; }
-      .macro-cards { grid-template-columns: 1fr; }
-      .methods-grid { grid-template-columns: 1fr; }
-      .ev-cards { grid-template-columns: 1fr; }
-      .sig-cols { grid-template-columns: 1fr; }
-      .glossary-dl { grid-template-columns: 1fr; }
-      .res-btns { flex-direction: column; }
       .wrap { width: calc(100vw - 32px); }
+      .bb-pills-row { flex-direction: row !important; flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -334,6 +240,7 @@
       <a class="nav-link" href="#phases">Phases</a>
       <a class="nav-link" href="#backbone">Backbone</a>
       <a class="nav-link" href="#methods">Methods</a>
+      <a class="nav-link" href="#robustness">Robustness</a>
       <a class="nav-link" href="#significance">Significance</a>
     </div>
   </div>
@@ -360,149 +267,140 @@
 </section>
 
 <!-- 2 SUMMARY -->
-<section id="summary">
+<section id="summary" class="sec">
   <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label">30-Second Summary</div>
-      <h2 class="sec-title">Four signals that define this paper.</h2>
-    </div>
-    <div class="card-grid stagger">
+    <div class="reveal"><div class="sec-label">30-Second Summary</div><h2 class="sec-title">Four signals that define this paper.</h2></div>
+    <div class="g2 stagger mt36">
       <div class="s-card reveal"><span class="s-card-num">01</span><h4>Question</h4><p>Did the pandemic reorganize the architecture of youth symptoms, or mainly reallocate control within a conserved scaffold?</p></div>
       <div class="s-card reveal"><span class="s-card-num">02</span><h4>Evidence</h4><p>Repeated cross-sections of U.S. young adults aged 18–24 across five pandemic phases, with 47 MHQ items and an India replication cohort.</p></div>
       <div class="s-card reveal"><span class="s-card-num">03</span><h4>Advance</h4><p>Models domination-based control at the module level and tests which derived metrics remain interpretable under resampling.</p></div>
       <div class="s-card reveal"><span class="s-card-num">04</span><h4>Conclusion</h4><p>Modules remain broadly stable, but control shifts from early stress dominance to later multi-module governance. AMCS is more reliable than ACF.</p></div>
     </div>
-    <div class="fig-wrap reveal" style="margin-top:28px">
-      <img src="/covid-mcn-site/figs/fig2-1.png" alt="Symptom networks, community structure and bootstrap stability across phases" loading="lazy" />
-      <div class="fig-cap">Fig. 2 — Symptom networks, community structure, and bootstrap stability across five pandemic phases</div>
+    <div class="g12 mt24 reveal">
+      <div class="fig-wrap"><img src="/covid-mcn-site/figs/fig2-1.png" alt="Symptom networks across phases" loading="lazy" /><div class="fig-cap">Fig. 2 — Networks, community structure, and bootstrap stability</div></div>
+      <div class="svg-fig"><img src="/covid-mcn-site/figs/cv-scatter.svg" alt="ACF vs CV scatter by domain" loading="lazy" /><div class="fig-cap">Control frequency vs. coefficient of variation — backbone (●) vs. labile (▲) nodes</div></div>
     </div>
   </div>
 </section>
 
 <!-- 3 PHASES -->
-<section id="phases">
+<section id="phases" class="sec">
   <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label">Interactive Phase Explorer</div>
-      <h2 class="sec-title">How control migrated across five phases.</h2>
-      <p class="sec-sub">Click each phase to compare what stayed stable and what changed in the symptom network's control architecture.</p>
-    </div>
+    <div class="reveal"><div class="sec-label">Interactive Phase Explorer</div><h2 class="sec-title">How control migrated across five phases.</h2><p class="sec-sub">Click each phase to compare what stayed stable and what changed in the symptom network's control architecture.</p></div>
     <div class="timeline reveal" id="timeline"></div>
-    <div class="phase-body reveal">
-      <div class="phase-info-panel">
-        <div id="pBadges"></div>
-        <div class="phase-regime" id="pRegime"></div>
-        <h3 class="phase-headline" id="pHeadline"></h3>
-        <p class="phase-ctx" id="pContext"></p>
-        <div class="sc-columns">
-          <div class="sc-box"><h5><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Stays stable</h5><p id="pStable"></p></div>
-          <div class="sc-box"><h5><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Changes here</h5><p id="pChange"></p></div>
+    <div class="g12 reveal" style="margin-top:40px">
+      <div class="flex-col gap12">
+        <div class="info-panel">
+          <div id="pBadges"></div>
+          <div class="pill-tag" id="pRegime"></div>
+          <h3 style="font-size:clamp(1.02rem,1.2vw,1.18rem);margin-bottom:10px;line-height:1.35" id="pHeadline"></h3>
+          <p style="font-size:0.9rem;color:var(--muted);margin-bottom:20px" id="pContext"></p>
+          <div class="g2">
+            <div class="sc-box"><h5><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Stays stable</h5><p id="pStable"></p></div>
+            <div class="sc-box"><h5><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Changes here</h5><p id="pChange"></p></div>
+          </div>
         </div>
+        <div class="svg-fig"><img src="/covid-mcn-site/figs/amcs-trajectory.svg" alt="Domain AMCS trajectory across phases" loading="lazy" /><div class="fig-cap">Domain-level AMCS trajectory — EMO dominates early, convergence later</div></div>
       </div>
-      <div class="phase-fig-area">
-        <div class="svg-box">
-          <svg id="networkSvg" viewBox="0 0 480 360" width="100%" height="auto" aria-label="Module control network diagram"></svg>
-        </div>
-        <div class="fig-wrap phase-fig-transition" id="phaseFig">
-          <img src="/covid-mcn-site/figs/fig3-2.png" alt="Module-level control chord diagrams and ACF trends" loading="lazy" />
-          <div class="fig-cap">Fig. 3 — Chord diagrams, domain ACF, and MCN in/out-degree across phases</div>
-        </div>
+      <div class="flex-col gap12">
+        <div class="svg-box"><svg id="networkSvg" viewBox="0 0 480 360" width="100%" height="auto" aria-label="Module control network"></svg></div>
+        <div class="fig-wrap phase-fig-transition" id="phaseFig"><img src="/covid-mcn-site/figs/fig3-2.png" alt="Chord diagrams and ACF trends" loading="lazy" /><div class="fig-cap">Fig. 3 — Chord diagrams, domain ACF, MCN in/out-degree</div></div>
       </div>
     </div>
-    <div class="fig-wrap reveal" style="margin-top:24px">
-      <img src="/covid-mcn-site/figs/fig3.png" alt="Module control flow across phases" loading="lazy" />
-      <div class="fig-cap">Fig. 3b — Module-level control flow and AMCS across five pandemic phases</div>
+    <div class="g12 mt24 reveal">
+      <div class="svg-fig"><img src="/covid-mcn-site/figs/chord-phases.svg" alt="Module control chord diagrams for all phases" loading="lazy" /><div class="fig-cap">Module control chord diagrams — Early → Post-Omicron progression</div></div>
+      <div class="svg-fig"><img src="/covid-mcn-site/figs/methods-structure.svg" alt="Module size structure across phases" loading="lazy" /><div class="fig-cap">Module size distribution (nodes per domain) across pandemic phases</div></div>
     </div>
   </div>
 </section>
 
 <!-- 4 BACKBONE -->
-<section id="backbone">
+<section id="backbone" class="sec">
   <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label">Backbone Symptoms</div>
-      <h2 class="sec-title">Controlled migration around a persistent core.</h2>
-      <p class="sec-sub">Stable backbone controllers persist across phases, while macro context is carefully framed as associational, not causal.</p>
-    </div>
-    <div class="bb-grid reveal">
-      <div class="bb-pills" id="bbPills"></div>
+    <div class="reveal"><div class="sec-label">Backbone Symptoms</div><h2 class="sec-title">Controlled migration around a persistent core.</h2><p class="sec-sub">Stable backbone controllers persist across phases, while macro context is carefully framed as associational, not causal.</p></div>
+    <div class="g12 mt36 reveal">
+      <div class="flex-col gap8">
+        <div class="flex-col gap6 bb-pills-row" id="bbPills" style="display:flex;flex-direction:column;gap:6px"></div>
+      </div>
       <div class="bb-detail" id="bbDetail"></div>
     </div>
-    <div class="fig-wrap reveal" style="margin-top:24px">
-      <img src="/covid-mcn-site/figs/fig4-2.png" alt="Control frequency, CV scatter, and alluvial flow" loading="lazy" />
-      <div class="fig-cap">Fig. 4 — Control frequency networks, CV scatter, and alluvial flow of module dominance</div>
+    <div class="g12 mt24 reveal">
+      <div class="svg-fig"><img src="/covid-mcn-site/figs/backbone-sankey.svg" alt="Network comparison and backbone identification" loading="lazy" /><div class="fig-cap">Early vs. Post-Omicron networks — backbone nodes (●) and labile nodes (▲) with CF scatter</div></div>
+      <div class="fig-wrap"><img src="/covid-mcn-site/figs/fig4-2.png" alt="Control frequency and alluvial flow" loading="lazy" /><div class="fig-cap">Fig. 4 — Control frequency, CV scatter, and alluvial module dominance flow</div></div>
     </div>
-    <div class="macro-cards stagger reveal">
-      <div class="macro-card"><div class="macro-icon" style="background:var(--str)"></div><div><h5>Policy variables appear more proximal than case counts</h5><p>The organization of daily life may track youth symptoms more closely than epidemiological burden by itself.</p></div></div>
-      <div class="macro-card"><div class="macro-icon" style="background:var(--emo)"></div><div><h5>Illustrative, not deterministic</h5><p>Fear &amp; Anxiety aligns with movement restrictions; Emotional Resilience shows a short-lag relationship with travel controls.</p></div></div>
-      <div class="macro-card"><div class="macro-icon" style="background:var(--csf)"></div><div><h5>Language discipline throughout</h5><p>"Tracked," "aligned with," and "provided context for" — never causal phrases.</p></div></div>
+    <div class="g3 stagger mt24 reveal">
+      <div class="macro-card"><div class="macro-icon" style="background:var(--str)"></div><div><h5>Policy variables appear more proximal than case counts</h5><p>The organization of daily life may track youth symptoms more closely than epidemiological burden.</p></div></div>
+      <div class="macro-card"><div class="macro-icon" style="background:var(--emo)"></div><div><h5>Illustrative, not deterministic</h5><p>Fear &amp; Anxiety aligns with movement restrictions; Emotional Resilience with travel controls.</p></div></div>
+      <div class="macro-card"><div class="macro-icon" style="background:var(--csf)"></div><div><h5>Language discipline throughout</h5><p>"Tracked," "aligned with," "provided context for" — never causal phrases.</p></div></div>
     </div>
-    <div class="fig-wrap reveal" style="margin-top:20px">
-      <img src="/covid-mcn-site/figs/fig5.png" alt="Policy decoupling, lagged associations, and lag-lead heatmap" loading="lazy" />
-      <div class="fig-cap">Fig. 5 — Macro-context analysis: policy decoupling, lagged associations, and lead-lag heatmap</div>
+    <div class="g12 mt24 reveal">
+      <div class="svg-fig"><img src="/covid-mcn-site/figs/acf-macro.svg" alt="ACF trajectory and lagged macro associations" loading="lazy" /><div class="fig-cap">Domain-level ACF across phases, lead-lag heatmap, and policy decoupling dynamics</div></div>
+      <div class="fig-wrap"><img src="/covid-mcn-site/figs/fig5.png" alt="Macro-context analysis" loading="lazy" /><div class="fig-cap">Fig. 5 — Policy decoupling, lagged associations, and lead-lag heatmap</div></div>
     </div>
   </div>
 </section>
 
 <!-- 5 METHODS -->
-<section id="methods">
+<section id="methods" class="sec">
   <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label">Method &amp; Robustness</div>
-      <h2 class="sec-title">The analytic pipeline, step by step.</h2>
-      <p class="sec-sub">A transparent five-step flow from raw data to validated findings, with explicit robustness evidence.</p>
-    </div>
-    <div class="methods-grid">
+    <div class="reveal"><div class="sec-label">Method</div><h2 class="sec-title">The analytic pipeline, step by step.</h2><p class="sec-sub">A transparent five-step flow from raw data to validated findings.</p></div>
+    <div class="g12 mt36">
       <div class="pipeline reveal">
         <div class="pipe-step"><div class="pipe-num">1</div><div><h5>Phase-stratified repeated cross-sections</h5><p>Data organized into five pandemic phases, enabling structured comparison while avoiding false longitudinal claims.</p></div></div>
-        <div class="pipe-step"><div class="pipe-num">2</div><div><h5>Graphical model estimation</h5><p>Per-phase symptom network via Gaussian graphical model (graphical LASSO), representing conditional dependence among 47 MHQ symptoms.</p></div></div>
-        <div class="pipe-step"><div class="pipe-num">3</div><div><h5>Community detection &amp; domain alignment</h5><p>Weighted Louvain identifies communities, aligned to a fixed four-domain mapping for comparable, non-circular cross-phase interpretation.</p></div></div>
-        <div class="pipe-step"><div class="pipe-num">4</div><div><h5>Exact minimum dominating sets &amp; control metrics</h5><p>All minimum-cardinality dominating sets enumerated exactly, yielding node-level control frequency and module-level ACF and AMCS.</p></div></div>
+        <div class="pipe-step"><div class="pipe-num">2</div><div><h5>Graphical model estimation</h5><p>Per-phase symptom network via Gaussian graphical model (graphical LASSO), conditional dependence among 47 MHQ symptoms.</p></div></div>
+        <div class="pipe-step"><div class="pipe-num">3</div><div><h5>Community detection &amp; domain alignment</h5><p>Weighted Louvain identifies communities, aligned to a fixed four-domain mapping for non-circular cross-phase interpretation.</p></div></div>
+        <div class="pipe-step"><div class="pipe-num">4</div><div><h5>Exact minimum dominating sets &amp; control metrics</h5><p>All minimum-cardinality dominating sets enumerated exactly, yielding CF, ACF, and AMCS.</p></div></div>
         <div class="pipe-step"><div class="pipe-num">5</div><div><h5>Resampling, case-dropping &amp; replication</h5><p>Bootstrap variation, case-loss stability, and India cohort replication to separate robust signals from noise.</p></div></div>
       </div>
-      <div class="methods-right">
+      <div class="flex-col gap16 reveal">
+        <div class="fig-wrap"><img src="/covid-mcn-site/figs/fig1.png" alt="Full analytic pipeline" loading="lazy" /><div class="fig-cap">Fig. 1 — Pipeline: network estimation → community detection → MDS → module control → domain alignment</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 ROBUSTNESS (new dedicated section) -->
+<section id="robustness" class="sec">
+  <div class="wrap">
+    <div class="reveal"><div class="sec-label">Robustness</div><h2 class="sec-title">Metric stability under resampling.</h2><p class="sec-sub">Bootstrap variation, case-dropping sensitivity, and cross-national replication separate robust signals from noise.</p></div>
+    <div class="g12 mt36">
+      <div class="flex-col gap16">
         <div class="rob-panel reveal" id="robPanel">
           <h4>Metric stability at 60% case retention</h4>
           <div class="rob-sub">Mean replicate-to-baseline correlation across all phases</div>
-          <div class="rob-bars">
+          <div>
             <div class="rob-row"><span class="rob-label">Strength</span><div class="rob-track"><div class="rob-fill green" data-width="83.8"></div></div><span class="rob-val green">0.838</span></div>
             <div class="rob-row"><span class="rob-label">AMCS</span><div class="rob-track"><div class="rob-fill yellow" data-width="73.7"></div></div><span class="rob-val yellow">0.737</span></div>
             <div class="rob-row"><span class="rob-label">ACF</span><div class="rob-track"><div class="rob-fill red" data-width="33.9"></div></div><span class="rob-val red">0.339</span></div>
           </div>
           <p class="rob-note">This hierarchy explains why the manuscript emphasizes AMCS over ACF for cross-phase comparison.</p>
         </div>
-        <div class="ev-cards stagger reveal">
-          <div class="ev-card"><h5>Replication</h5><p>India cohort and downsampling show patterns aren't an artifact of one country or sample size.</p></div>
-          <div class="ev-card"><h5>Metric discipline</h5><p>Node strength and AMCS are stable; ACF is flagged as more sensitive to case loss.</p></div>
-          <div class="ev-card"><h5>Bounded inference</h5><p>Cross-sectional design, conditional dependencies (not causal), and exploratory macro links.</p></div>
-        </div>
-        <div class="fig-wrap reveal">
-          <img src="/covid-mcn-site/figs/fig6.png" alt="Bootstrap stability and case-dropping robustness" loading="lazy" />
-          <div class="fig-cap">Fig. 6 — Edge/MDS bootstrap distributions, case-dropping stability, and module count distributions</div>
+        <div class="g3 stagger reveal">
+          <div class="ev-card"><h5>Replication</h5><p>India cohort confirms patterns aren't an artifact of one country or sample size.</p></div>
+          <div class="ev-card"><h5>Metric discipline</h5><p>Strength and AMCS stable; ACF flagged as more sensitive to case loss.</p></div>
+          <div class="ev-card"><h5>Bounded inference</h5><p>Cross-sectional design, conditional dependencies, and exploratory macro links.</p></div>
         </div>
       </div>
+      <div class="flex-col gap16 reveal">
+        <div class="svg-fig"><img src="/covid-mcn-site/figs/case-dropping.svg" alt="Case-dropping robustness curves" loading="lazy" /><div class="fig-cap">Case-dropping robustness: Strength (red), AMCS (blue), ACF (purple) across retain ratios per phase</div></div>
+        <div class="svg-fig"><img src="/covid-mcn-site/figs/bootstrap-dist.svg" alt="Bootstrap distributions" loading="lazy" /><div class="fig-cap">Bootstrap distributions of edge/MDS counts, MDS size, and module count per phase</div></div>
+      </div>
     </div>
-    <div class="fig-wrap reveal" style="margin-top:24px">
-      <img src="/covid-mcn-site/figs/fig1.png" alt="Analytic pipeline overview" loading="lazy" />
-      <div class="fig-cap">Fig. 1 — Full analytic pipeline: network estimation → community detection → MDS enumeration → module control → domain alignment</div>
-    </div>
+    <div class="fig-wrap mt24 reveal"><img src="/covid-mcn-site/figs/fig6.png" alt="Full robustness analysis" loading="lazy" /><div class="fig-cap">Fig. 6 — Edge/MDS bootstrap, case-dropping stability, MDS size and module count distributions</div></div>
   </div>
 </section>
 
-<!-- 6 SIGNIFICANCE -->
-<section id="significance">
+<!-- 7 SIGNIFICANCE -->
+<section id="significance" class="sec">
   <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label">Why This Matters</div>
-      <h2 class="sec-title">Review-worthiness at a glance.</h2>
-    </div>
-    <div class="sig-cols stagger reveal">
+    <div class="reveal"><div class="sec-label">Why This Matters</div><h2 class="sec-title">Review-worthiness at a glance.</h2></div>
+    <div class="g3 stagger mt36 reveal">
       <div class="sig-card"><div class="sig-cat">Substantive</div><h4>System organization, not just prevalence</h4><p>Reframes youth mental health under prolonged crisis from symptom burden to system architecture, reaching beyond pandemic-period description.</p></div>
-      <div class="sig-card"><div class="sig-cat">Methodological</div><h4>Module control with exact enumeration</h4><p>An interpretable framework, exact dominating-set enumeration, and direct metric robustness comparison — highly relevant for network-based mental health research.</p></div>
+      <div class="sig-card"><div class="sig-cat">Methodological</div><h4>Module control with exact enumeration</h4><p>An interpretable framework, exact dominating-set enumeration, and direct metric robustness comparison for network mental health research.</p></div>
       <div class="sig-card"><div class="sig-cat">Translational</div><h4>Phase-tailored intervention targets</h4><p>Control is concentrated early but distributes as crisis becomes chronic, suggesting phase-tailored strategies over a fixed response.</p></div>
     </div>
-    <div class="accord-wrap reveal">
-      <h3 class="accord-title">What this paper does not claim</h3>
+    <div class="mt36 reveal">
+      <h3 style="font-size:clamp(1.1rem,1.3vw,1.3rem);margin-bottom:16px">What this paper does not claim</h3>
       <div class="accord-item"><button class="accord-trigger">Not within-person longitudinal <i class="accord-icon">+</i></button><div class="accord-body"><div class="accord-content">Repeated cross-sections, not a cohort tracked over time. Phase comparisons describe population-level shifts, not individual trajectories.</div></div></div>
       <div class="accord-item"><button class="accord-trigger">Edges ≠ causal direction <i class="accord-icon">+</i></button><div class="accord-body"><div class="accord-content">Conditional dependencies from cross-sectional data. They do not imply that one symptom causes another.</div></div></div>
       <div class="accord-item"><button class="accord-trigger">Policy associations are exploratory <i class="accord-icon">+</i></button><div class="accord-body"><div class="accord-content">Macro-level analyses linking symptoms to policy variables are hypothesis-generating, not confirmatory.</div></div></div>
@@ -511,19 +409,19 @@
   </div>
 </section>
 
-<!-- 7 FOOTER -->
+<!-- 8 FOOTER -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-label">Glossary</div>
-    <dl class="glossary-dl">
-      <div class="gl-entry"><dt>Mesoscale scaffold</dt><dd>The relatively stable community structure of the symptom network — the broad modular organization that persists even when influence shifts across phases.</dd></div>
-      <div class="gl-entry"><dt>Minimum dominating set <span class="tag">MDS</span></dt><dd>The smallest set of nodes that covers the whole graph directly or through neighbors. Defines which symptoms can serve as drivers.</dd></div>
-      <div class="gl-entry"><dt>Control frequency <span class="tag">CF</span></dt><dd>Proportion of exact minimum dominating sets in which a symptom appears. High CF = repeated participation in driver solutions.</dd></div>
-      <div class="gl-entry"><dt>Avg. control frequency <span class="tag">ACF</span></dt><dd>Mean normalized CF within a module. Informative descriptively, but less stable under case loss than AMCS.</dd></div>
+    <dl class="g2 gap12" style="margin-bottom:48px">
+      <div class="gl-entry"><dt>Mesoscale scaffold</dt><dd>The relatively stable community structure — broad modular organization persisting even when influence shifts across phases.</dd></div>
+      <div class="gl-entry"><dt>Minimum dominating set <span class="tag">MDS</span></dt><dd>Smallest node set covering the whole graph directly or through neighbors. Defines which symptoms can serve as drivers.</dd></div>
+      <div class="gl-entry"><dt>Control frequency <span class="tag">CF</span></dt><dd>Proportion of exact MDS in which a symptom appears. High CF = repeated participation in driver solutions.</dd></div>
+      <div class="gl-entry"><dt>Avg. control frequency <span class="tag">ACF</span></dt><dd>Mean normalized CF within a module. Informative but less stable under case loss than AMCS.</dd></div>
       <div class="gl-entry"><dt>Avg. module control strength <span class="tag">AMCS</span></dt><dd>Directed summary of how strongly one module dominates another. The manuscript's key mesoscale metric.</dd></div>
     </dl>
     <div class="footer-label">Resources</div>
-    <div class="res-btns">
+    <div style="display:flex;gap:12px;margin-bottom:40px;flex-wrap:wrap">
       <a class="res-btn" href="#"><span class="res-btn-icon">PDF</span><div class="res-btn-text"><strong>Main manuscript</strong><span>Full article for formal review</span></div></a>
       <a class="res-btn" href="#"><span class="res-btn-icon">SI</span><div class="res-btn-text"><strong>Supplementary information</strong><span>Penalty sensitivity, variable mapping, robustness</span></div></a>
       <a class="res-btn" href="https://github.com/realfty/covid-mcn"><span class="res-btn-icon">&lt;/&gt;</span><div class="res-btn-text"><strong>Analysis code</strong><span>Full pipeline on GitHub</span></div></a>
@@ -533,280 +431,92 @@
 </footer>
 
 <script is:inline>
-  // ── Data ──
   var phases = [
-    { key:'early', label:'Early', date:'2020.04–07', sample:518, regime:'Stress-centered',
-      context:'Abrupt restriction, uncertainty, school disruption, and acute threat appraisal.',
-      summary:'Stress-related circuitry dominates outgoing control, shaping downstream emotional and cognitive-social modules.',
-      stable:'The broad modular scaffold remains recognizable, organized into a small number of coherent symptom communities.',
-      change:'Stress has the clearest control advantage — the cleanest "acute-response regime" phase.',
-      nodes:['STR','EMO','CSF','SPF'], extra:null,
-      edges:[['STR','EMO',1.0],['STR','CSF',0.86],['STR','SPF',0.56],['EMO','STR',0.32]] },
-    { key:'first', label:'First Wave', date:'2020.07–2021.01', sample:2321, regime:'Stress + physiological',
-      context:'Sustained disruption with stress still acting as the main organizing force.',
-      summary:'Stress remains the leading controller. A physiological subcluster becomes visible without changing four-domain interpretation.',
-      stable:'The same core architecture persists, reinforcing that phase-wise comparison is meaningful on a conserved scaffold.',
-      change:'Even when communities split visually, the higher-order interpretation remains stable.',
-      nodes:['STR','EMO','CSF','SPF'], extra:'PHY',
-      edges:[['STR','EMO',0.96],['STR','CSF',0.78],['STR','PHY',0.62],['SPF','CSF',0.34]] },
-    { key:'second', label:'Second Wave', date:'2021.01–2022.01', sample:4721, regime:'Beginning redistribution',
-      context:'The crisis is no longer only acute; control becomes less monopolized by stress alone.',
-      summary:'The network scaffold remains intact, but control begins to distribute more visibly across multiple domains.',
-      stable:'Community organization remains broadly similar, preserving the central scaffold claim.',
-      change:'The transition phase where the shift from dominance to broader governance begins to emerge.',
-      nodes:['STR','EMO','CSF','SPF'], extra:null,
-      edges:[['STR','EMO',0.82],['STR','CSF',0.68],['SPF','EMO',0.52],['CSF','EMO',0.48]] },
-    { key:'omicron', label:'Omicron', date:'2022.01–2023.01', sample:4023, regime:'Distributed cross-domain',
-      context:'The system reflects chronic adaptation rather than only acute stress response.',
-      summary:'Control becomes more evenly shared across stress, cognitive-social, and self-perception/physiological domains.',
-      stable:'The architecture does not collapse or fragment into a qualitatively different system.',
-      change:'Supports the move toward multi-module governance under prolonged crisis.',
-      nodes:['STR','EMO','CSF','SPF'], extra:null,
-      edges:[['STR','EMO',0.70],['SPF','EMO',0.66],['CSF','STR',0.54],['SPF','CSF',0.58]] },
-    { key:'post', label:'Post-Omicron', date:'2023.01–2024.01', sample:2598, regime:'Broad multi-module',
-      context:'Formal restrictions ease, but accumulated burden and adaptation continue to shape interaction.',
-      summary:'Greater boundary mixing with a broader, more distributed control pattern beyond early stress dominance.',
-      stable:'A persistent backbone of influential symptoms remains visible, supporting continuity across the full window.',
-      change:'The clearest phase for chronic adaptation, boundary mixing, and integrative leverage.',
-      nodes:['STR','EMO','CSF','SPF'], extra:null,
-      edges:[['STR','EMO',0.64],['SPF','EMO',0.72],['CSF','STR',0.60],['CSF','SPF',0.52]] }
+    {key:'early',label:'Early',date:'2020.04–07',sample:518,regime:'Stress-centered',context:'Abrupt restriction, uncertainty, school disruption, and acute threat appraisal.',summary:'Stress-related circuitry dominates outgoing control, shaping downstream emotional and cognitive-social modules.',stable:'The broad modular scaffold remains recognizable, organized into coherent symptom communities.',change:'Stress has the clearest control advantage — the cleanest "acute-response regime" phase.',nodes:['STR','EMO','CSF','SPF'],extra:null,edges:[['STR','EMO',1.0],['STR','CSF',0.86],['STR','SPF',0.56],['EMO','STR',0.32]]},
+    {key:'first',label:'First Wave',date:'2020.07–2021.01',sample:2321,regime:'Stress + physiological',context:'Sustained disruption with stress still the main organizing force.',summary:'Stress remains the leading controller. A physiological subcluster becomes visible without changing four-domain interpretation.',stable:'Core architecture persists, reinforcing that phase-wise comparison is meaningful on a conserved scaffold.',change:'Even when communities split visually, the higher-order interpretation remains stable.',nodes:['STR','EMO','CSF','SPF'],extra:'PHY',edges:[['STR','EMO',0.96],['STR','CSF',0.78],['STR','PHY',0.62],['SPF','CSF',0.34]]},
+    {key:'second',label:'Second Wave',date:'2021.01–2022.01',sample:4721,regime:'Beginning redistribution',context:'The crisis is no longer only acute; control becomes less monopolized by stress.',summary:'Network scaffold intact, but the control map begins to distribute more visibly across multiple domains.',stable:'Community organization broadly similar, preserving the central scaffold claim.',change:'The transition phase — shift from dominance to broader governance begins to emerge.',nodes:['STR','EMO','CSF','SPF'],extra:null,edges:[['STR','EMO',0.82],['STR','CSF',0.68],['SPF','EMO',0.52],['CSF','EMO',0.48]]},
+    {key:'omicron',label:'Omicron',date:'2022.01–2023.01',sample:4023,regime:'Distributed cross-domain',context:'System reflects chronic adaptation rather than only acute stress response.',summary:'Control more evenly shared across stress, cognitive-social, and self-perception/physiological domains.',stable:'Architecture does not collapse or fragment into a qualitatively different system.',change:'Supports the move toward multi-module governance under prolonged crisis.',nodes:['STR','EMO','CSF','SPF'],extra:null,edges:[['STR','EMO',0.70],['SPF','EMO',0.66],['CSF','STR',0.54],['SPF','CSF',0.58]]},
+    {key:'post',label:'Post-Omicron',date:'2023.01–2024.01',sample:2598,regime:'Broad multi-module',context:'Restrictions ease, but accumulated burden and adaptation continue to shape interaction.',summary:'Greater boundary mixing with broader, more distributed control beyond early stress dominance.',stable:'Persistent backbone of influential symptoms supports continuity across the full window.',change:'Clearest phase for chronic adaptation, boundary mixing, and integrative leverage.',nodes:['STR','EMO','CSF','SPF'],extra:null,edges:[['STR','EMO',0.64],['SPF','EMO',0.72],['CSF','STR',0.60],['CSF','SPF',0.52]]}
+  ];
+  var domainCfg={STR:{x:240,y:60,color:'#CC79A7'},EMO:{x:410,y:180,color:'#E69F00'},CSF:{x:240,y:300,color:'#56B4E9'},SPF:{x:70,y:180,color:'#009E73'},PHY:{x:370,y:75,color:'#9EA33A'}};
+  var symptoms=[
+    {name:'Fear & Anxiety',domain:'STR',role:'Backbone',why:'Repeatedly influential — anchors that stable control nodes persist while system-level control reallocates.',use:'Persistent stress-linked controller explaining continuity under prolonged disruption.'},
+    {name:'Anger & Irritability',domain:'STR / EMO',role:'Backbone',why:'Sits near emotional-stress interfaces, showing why early stress dominance continues to matter.',use:'Cross-boundary symptom keeping affective pressure connected to wider system behavior.'},
+    {name:'Sadness & Hopelessness',domain:'EMO',role:'Backbone',why:'Repeated prominence shows emotional burden remains central even when control locus changes.',use:'Connects module story to clinically legible emotional outcomes.'},
+    {name:'Focus & Concentration',domain:'CSF',role:'Backbone',why:'Later phases concern cognitive efficiency and day-to-day functioning, not only mood.',use:'Evidence that cognitive/social function becomes increasingly relevant as control participant.'},
+    {name:'Emotional Resilience',domain:'EMO / adaptive',role:'Backbone',why:'Control also at adaptive-regulatory interfaces, not only in overtly negative symptoms.',use:'Bridge between risk-oriented interpretation and a broader regulation framework.'}
   ];
 
-  var domainCfg = {
-    STR:{x:240,y:60,color:'#CC79A7'},EMO:{x:410,y:180,color:'#E69F00'},
-    CSF:{x:240,y:300,color:'#56B4E9'},SPF:{x:70,y:180,color:'#009E73'},
-    PHY:{x:370,y:75,color:'#9EA33A'}
-  };
+  // Counter
+  function animateCounter(el,target,dur){dur=dur||1800;var start=null,fmt=target>999;function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/dur,1),e=1-Math.pow(1-p,3),v=Math.floor(e*target);el.textContent=fmt?v.toLocaleString():v;if(p<1)requestAnimationFrame(step);else el.textContent=fmt?target.toLocaleString():target;}requestAnimationFrame(step);}
 
-  var symptoms = [
-    {name:'Fear & Anxiety',domain:'STR',role:'Backbone',why:'Repeatedly influential across phases — anchors the claim that stable control nodes persist while system-level control reallocates.',use:'A persistent stress-linked controller explaining continuity under prolonged disruption.'},
-    {name:'Anger & Irritability',domain:'STR / EMO',role:'Backbone',why:'Sits near major emotional-stress interfaces, showing why early stress dominance continues to matter as control distributes.',use:'Cross-boundary symptom keeping affective pressure connected to wider system behavior.'},
-    {name:'Sadness & Hopelessness',domain:'EMO',role:'Backbone',why:'Repeated prominence shows emotional burden remains central even when the locus of outgoing control changes.',use:'Connects the module story to clinically legible emotional outcomes.'},
-    {name:'Focus & Concentration',domain:'CSF',role:'Backbone',why:'Explains why later phases concern cognitive efficiency and day-to-day functioning, not only mood.',use:'Evidence that cognitive/social function becomes increasingly relevant as a control participant.'},
-    {name:'Emotional Resilience',domain:'EMO / adaptive',role:'Backbone',why:'Control is not only in overtly negative symptoms but also at adaptive-regulatory interfaces.',use:'Bridge between risk-oriented interpretation and a broader regulation framework.'}
-  ];
+  // Observers
+  var revealObs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.reveal,.stagger').forEach(function(el){revealObs.observe(el);});
+  var counterDone=false;
+  new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!counterDone){counterDone=true;document.querySelectorAll('.h-stat-num').forEach(function(el){animateCounter(el,parseInt(el.dataset.target,10));});}});},{threshold:0.3}).observe(document.querySelector('.hero-stats'));
+  var robDone=false;
+  new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!robDone){robDone=true;document.querySelectorAll('.rob-fill').forEach(function(b){b.style.width=b.dataset.width+'%';});}});},{threshold:0.3}).observe(document.getElementById('robPanel'));
+  // Nav active
+  document.querySelectorAll('section[id]').forEach(function(s){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)document.querySelectorAll('.nav-link').forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id);});});},{rootMargin:'-40% 0px -55% 0px'}).observe(s);});
 
-  // ── Counter ──
-  function animateCounter(el, target, dur) {
-    dur = dur || 1800;
-    var start = null, fmt = target > 999;
-    function step(ts) {
-      if (!start) start = ts;
-      var p = Math.min((ts - start) / dur, 1);
-      var e = 1 - Math.pow(1 - p, 3);
-      var v = Math.floor(e * target);
-      el.textContent = fmt ? v.toLocaleString() : v;
-      if (p < 1) requestAnimationFrame(step);
-      else el.textContent = fmt ? target.toLocaleString() : target;
-    }
-    requestAnimationFrame(step);
-  }
-
-  // ── Observers ──
-  var revealObs = new IntersectionObserver(function(es) {
-    es.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, {threshold:0.1, rootMargin:'0px 0px -30px 0px'});
-  document.querySelectorAll('.reveal,.stagger').forEach(function(el) { revealObs.observe(el); });
-
-  var counterDone = false;
-  new IntersectionObserver(function(es) {
-    es.forEach(function(e) {
-      if (e.isIntersecting && !counterDone) {
-        counterDone = true;
-        document.querySelectorAll('.h-stat-num').forEach(function(el) {
-          animateCounter(el, parseInt(el.dataset.target, 10));
-        });
-      }
+  // Phase Explorer
+  (function(){
+    var tl=document.getElementById('timeline'),svg=document.getElementById('networkSvg'),ns='http://www.w3.org/2000/svg';
+    phases.forEach(function(ph,i){
+      var node=document.createElement('button');node.className='tl-node'+(i===0?' active':'');node.textContent=(i+1);
+      var lbl=document.createElement('span');lbl.className='tl-label';lbl.textContent=ph.label;
+      var dt=document.createElement('span');dt.className='tl-date';dt.textContent=ph.date;
+      node.appendChild(lbl);node.appendChild(dt);
+      node.addEventListener('click',function(){setPhase(i);});tl.appendChild(node);
     });
-  }, {threshold:0.3}).observe(document.querySelector('.hero-stats'));
-
-  var robDone = false;
-  new IntersectionObserver(function(es) {
-    es.forEach(function(e) {
-      if (e.isIntersecting && !robDone) {
-        robDone = true;
-        document.querySelectorAll('.rob-fill').forEach(function(b) { b.style.width = b.dataset.width + '%'; });
-      }
-    });
-  }, {threshold:0.3}).observe(document.getElementById('robPanel'));
-
-  // Nav active tracking
-  var navLinks = document.querySelectorAll('.nav-link');
-  new IntersectionObserver(function(es) {
-    es.forEach(function(e) {
-      if (e.isIntersecting) {
-        navLinks.forEach(function(l) { l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id); });
-      }
-    });
-  }, {rootMargin:'-40% 0px -55% 0px'}).observe(document.getElementById('summary'));
-  document.querySelectorAll('section[id]').forEach(function(s) {
-    new IntersectionObserver(function(es) {
-      es.forEach(function(e) {
-        if (e.isIntersecting) navLinks.forEach(function(l) { l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id); });
-      });
-    }, {rootMargin:'-40% 0px -55% 0px'}).observe(s);
-  });
-
-  // ── Phase Explorer ──
-  (function() {
-    var tl = document.getElementById('timeline');
-    var svg = document.getElementById('networkSvg');
-    var ns = 'http://www.w3.org/2000/svg';
-
-    phases.forEach(function(ph, i) {
-      var node = document.createElement('button');
-      node.className = 'tl-node' + (i === 0 ? ' active' : '');
-      node.textContent = (i + 1);
-      var lbl = document.createElement('span'); lbl.className = 'tl-label'; lbl.textContent = ph.label;
-      var dt = document.createElement('span'); dt.className = 'tl-date'; dt.textContent = ph.date;
-      node.appendChild(lbl); node.appendChild(dt);
-      node.addEventListener('click', function() { setPhase(i); });
-      tl.appendChild(node);
-    });
-
-    function setPhase(idx) {
-      var ph = phases[idx];
-      tl.querySelectorAll('.tl-node').forEach(function(n, i) { n.classList.toggle('active', i === idx); });
-      document.getElementById('pRegime').textContent = ph.regime;
-      document.getElementById('pHeadline').textContent = ph.summary;
-      document.getElementById('pContext').textContent = ph.context;
-      document.getElementById('pStable').textContent = ph.stable;
-      document.getElementById('pChange').textContent = ph.change;
-      var badges = document.getElementById('pBadges');
-      badges.textContent = '';
-      [['n = ', ph.sample.toLocaleString()], ['Modules: ', '4–5']].forEach(function(b) {
-        var sp = document.createElement('span'); sp.className = 'p-badge';
-        sp.textContent = b[0]; var st = document.createElement('strong'); st.textContent = b[1];
-        sp.appendChild(st); badges.appendChild(sp);
-      });
-      // Fade figure
-      var fig = document.getElementById('phaseFig');
-      fig.classList.add('fading');
-      setTimeout(function() { fig.classList.remove('fading'); }, 350);
-      // Render SVG
+    function setPhase(idx){
+      var ph=phases[idx];
+      tl.querySelectorAll('.tl-node').forEach(function(n,i){n.classList.toggle('active',i===idx);});
+      document.getElementById('pRegime').textContent=ph.regime;
+      document.getElementById('pHeadline').textContent=ph.summary;
+      document.getElementById('pContext').textContent=ph.context;
+      document.getElementById('pStable').textContent=ph.stable;
+      document.getElementById('pChange').textContent=ph.change;
+      var badges=document.getElementById('pBadges');badges.textContent='';
+      [['n = ',ph.sample.toLocaleString()],['Modules: ','4–5']].forEach(function(b){var sp=document.createElement('span');sp.className='p-badge';sp.textContent=b[0];var st=document.createElement('strong');st.textContent=b[1];sp.appendChild(st);badges.appendChild(sp);});
+      var fig=document.getElementById('phaseFig');fig.classList.add('fading');setTimeout(function(){fig.classList.remove('fading');},350);
       renderNetwork(ph);
     }
-
-    function renderNetwork(ph) {
-      while (svg.firstChild) svg.removeChild(svg.firstChild);
-      // Defs
-      var defs = document.createElementNS(ns, 'defs');
-      var marker = document.createElementNS(ns, 'marker');
-      marker.setAttribute('id','ah'); marker.setAttribute('markerWidth','8');
-      marker.setAttribute('markerHeight','6'); marker.setAttribute('refX','7');
-      marker.setAttribute('refY','3'); marker.setAttribute('orient','auto');
-      var poly = document.createElementNS(ns, 'polygon');
-      poly.setAttribute('points','0 0, 8 3, 0 6'); poly.setAttribute('fill','rgba(232,237,242,0.4)');
-      marker.appendChild(poly); defs.appendChild(marker); svg.appendChild(defs);
-      // BG
-      var bg = document.createElementNS(ns, 'rect');
-      bg.setAttribute('width','480'); bg.setAttribute('height','360');
-      bg.setAttribute('rx','10'); bg.setAttribute('fill','#162236');
-      svg.appendChild(bg);
-      // Ring
-      var ring = document.createElementNS(ns, 'circle');
-      ring.setAttribute('cx','240'); ring.setAttribute('cy','180'); ring.setAttribute('r','120');
-      ring.setAttribute('fill','none'); ring.setAttribute('stroke','#1E3048'); ring.setAttribute('stroke-dasharray','4 6');
-      svg.appendChild(ring);
-      // Edges
-      ph.edges.forEach(function(e) {
-        var a = domainCfg[e[0]], b = domainCfg[e[1]], w = e[2];
-        if (!a || !b) return;
-        var path = document.createElementNS(ns, 'path');
-        var mx = (a.x+b.x)/2, my = (a.y+b.y)/2;
-        var dx = b.x-a.x, dy = b.y-a.y, norm = Math.hypot(dx,dy)||1;
-        var cx = mx-(dy/norm)*36, cy = my+(dx/norm)*36;
-        path.setAttribute('d', 'M '+a.x+' '+a.y+' Q '+cx+' '+cy+' '+b.x+' '+b.y);
-        path.setAttribute('fill','none'); path.setAttribute('stroke','rgba(232,237,242,0.25)');
-        path.setAttribute('stroke-width', String(1.5+5.5*w));
-        path.setAttribute('stroke-linecap','round');
-        path.setAttribute('opacity', String(0.25+0.65*w));
-        path.setAttribute('marker-end','url(#ah)');
-        svg.appendChild(path);
-      });
-      // Nodes
-      var nodes = ph.extra ? ph.nodes.concat([ph.extra]) : ph.nodes.slice();
-      nodes.forEach(function(key) {
-        var n = domainCfg[key]; if (!n) return;
-        var r = key === 'PHY' ? 18 : 24;
-        var halo = document.createElementNS(ns, 'circle');
-        halo.setAttribute('cx',String(n.x)); halo.setAttribute('cy',String(n.y));
-        halo.setAttribute('r',String(r+12)); halo.setAttribute('fill',n.color); halo.setAttribute('opacity','0.15');
-        svg.appendChild(halo);
-        var circle = document.createElementNS(ns, 'circle');
-        circle.setAttribute('cx',String(n.x)); circle.setAttribute('cy',String(n.y));
-        circle.setAttribute('r',String(r)); circle.setAttribute('fill',n.color);
-        circle.setAttribute('stroke','#162236'); circle.setAttribute('stroke-width','2.5');
-        svg.appendChild(circle);
-        var label = document.createElementNS(ns, 'text');
-        label.setAttribute('x',String(n.x)); label.setAttribute('y',String(n.y+4.5));
-        label.setAttribute('font-size', key==='PHY'?'10':'12');
-        label.setAttribute('font-weight','500');
-        label.setAttribute('font-family','IBM Plex Sans, sans-serif');
-        label.setAttribute('text-anchor','middle'); label.setAttribute('fill','white');
-        label.textContent = key;
-        svg.appendChild(label);
-      });
-      // Phase label
-      var pl = document.createElementNS(ns, 'text');
-      pl.setAttribute('x','20'); pl.setAttribute('y','28');
-      pl.setAttribute('font-size','12'); pl.setAttribute('font-weight','500');
-      pl.setAttribute('font-family','IBM Plex Sans, sans-serif');
-      pl.setAttribute('fill','#E8EDF2');
-      pl.textContent = ph.label + ' phase';
-      svg.appendChild(pl);
-      var rl = document.createElementNS(ns, 'text');
-      rl.setAttribute('x','20'); rl.setAttribute('y','44');
-      rl.setAttribute('font-size','10');
-      rl.setAttribute('font-family','IBM Plex Sans, sans-serif');
-      rl.setAttribute('fill','#4A6080');
-      rl.textContent = ph.regime;
-      svg.appendChild(rl);
+    function renderNetwork(ph){
+      while(svg.firstChild)svg.removeChild(svg.firstChild);
+      var defs=document.createElementNS(ns,'defs'),marker=document.createElementNS(ns,'marker');
+      marker.setAttribute('id','ah');marker.setAttribute('markerWidth','8');marker.setAttribute('markerHeight','6');marker.setAttribute('refX','7');marker.setAttribute('refY','3');marker.setAttribute('orient','auto');
+      var poly=document.createElementNS(ns,'polygon');poly.setAttribute('points','0 0, 8 3, 0 6');poly.setAttribute('fill','rgba(232,237,242,0.4)');
+      marker.appendChild(poly);defs.appendChild(marker);svg.appendChild(defs);
+      var bg=document.createElementNS(ns,'rect');bg.setAttribute('width','480');bg.setAttribute('height','360');bg.setAttribute('rx','10');bg.setAttribute('fill','#162236');svg.appendChild(bg);
+      var ring=document.createElementNS(ns,'circle');ring.setAttribute('cx','240');ring.setAttribute('cy','180');ring.setAttribute('r','120');ring.setAttribute('fill','none');ring.setAttribute('stroke','#1E3048');ring.setAttribute('stroke-dasharray','4 6');svg.appendChild(ring);
+      ph.edges.forEach(function(e){var a=domainCfg[e[0]],b=domainCfg[e[1]],w=e[2];if(!a||!b)return;var path=document.createElementNS(ns,'path'),mx=(a.x+b.x)/2,my=(a.y+b.y)/2,dx=b.x-a.x,dy=b.y-a.y,norm=Math.hypot(dx,dy)||1,cx=mx-(dy/norm)*36,cy=my+(dx/norm)*36;path.setAttribute('d','M '+a.x+' '+a.y+' Q '+cx+' '+cy+' '+b.x+' '+b.y);path.setAttribute('fill','none');path.setAttribute('stroke','rgba(232,237,242,0.25)');path.setAttribute('stroke-width',String(1.5+5.5*w));path.setAttribute('stroke-linecap','round');path.setAttribute('opacity',String(0.25+0.65*w));path.setAttribute('marker-end','url(#ah)');svg.appendChild(path);});
+      var nodes=ph.extra?ph.nodes.concat([ph.extra]):ph.nodes.slice();
+      nodes.forEach(function(key){var n=domainCfg[key];if(!n)return;var r=key==='PHY'?18:24;var halo=document.createElementNS(ns,'circle');halo.setAttribute('cx',String(n.x));halo.setAttribute('cy',String(n.y));halo.setAttribute('r',String(r+12));halo.setAttribute('fill',n.color);halo.setAttribute('opacity','0.15');svg.appendChild(halo);var circle=document.createElementNS(ns,'circle');circle.setAttribute('cx',String(n.x));circle.setAttribute('cy',String(n.y));circle.setAttribute('r',String(r));circle.setAttribute('fill',n.color);circle.setAttribute('stroke','#162236');circle.setAttribute('stroke-width','2.5');svg.appendChild(circle);var label=document.createElementNS(ns,'text');label.setAttribute('x',String(n.x));label.setAttribute('y',String(n.y+4.5));label.setAttribute('font-size',key==='PHY'?'10':'12');label.setAttribute('font-weight','500');label.setAttribute('font-family','IBM Plex Sans, sans-serif');label.setAttribute('text-anchor','middle');label.setAttribute('fill','white');label.textContent=key;svg.appendChild(label);});
+      var pl=document.createElementNS(ns,'text');pl.setAttribute('x','20');pl.setAttribute('y','28');pl.setAttribute('font-size','12');pl.setAttribute('font-weight','500');pl.setAttribute('font-family','IBM Plex Sans, sans-serif');pl.setAttribute('fill','#E8EDF2');pl.textContent=ph.label+' phase';svg.appendChild(pl);
+      var rl=document.createElementNS(ns,'text');rl.setAttribute('x','20');rl.setAttribute('y','44');rl.setAttribute('font-size','10');rl.setAttribute('font-family','IBM Plex Sans, sans-serif');rl.setAttribute('fill','#4A6080');rl.textContent=ph.regime;svg.appendChild(rl);
     }
     setPhase(0);
   })();
 
-  // ── Backbone ──
-  (function() {
-    var pills = document.getElementById('bbPills');
-    var detail = document.getElementById('bbDetail');
-    symptoms.forEach(function(s, i) {
-      var btn = document.createElement('button');
-      btn.className = 'bb-pill' + (i===0?' active':'');
-      btn.textContent = s.name;
-      btn.addEventListener('click', function() { setSymptom(i); });
-      pills.appendChild(btn);
-    });
-    function setSymptom(idx) {
-      var s = symptoms[idx];
-      pills.querySelectorAll('.bb-pill').forEach(function(b,i) { b.classList.toggle('active', i===idx); });
-      detail.textContent = '';
-      var tags = document.createElement('div'); tags.style.marginBottom = '12px';
-      [s.domain, s.role].forEach(function(t) {
-        var sp = document.createElement('span'); sp.className = 'bb-tag'; sp.textContent = t; tags.appendChild(sp);
-      });
-      detail.appendChild(tags);
-      var h = document.createElement('h4'); h.textContent = s.name; detail.appendChild(h);
-      var p1 = document.createElement('p');
-      var b1 = document.createElement('strong'); b1.textContent = 'Why: ';
-      p1.appendChild(b1); p1.appendChild(document.createTextNode(s.why)); detail.appendChild(p1);
-      var p2 = document.createElement('p');
-      var b2 = document.createElement('strong'); b2.textContent = 'Interpretation: ';
-      p2.appendChild(b2); p2.appendChild(document.createTextNode(s.use)); detail.appendChild(p2);
+  // Backbone
+  (function(){
+    var pills=document.getElementById('bbPills'),detail=document.getElementById('bbDetail');
+    symptoms.forEach(function(s,i){var btn=document.createElement('button');btn.className='bb-pill'+(i===0?' active':'');btn.textContent=s.name;btn.addEventListener('click',function(){setSymptom(i);});pills.appendChild(btn);});
+    function setSymptom(idx){
+      var s=symptoms[idx];pills.querySelectorAll('.bb-pill').forEach(function(b,i){b.classList.toggle('active',i===idx);});detail.textContent='';
+      var tags=document.createElement('div');tags.style.marginBottom='12px';
+      [s.domain,s.role].forEach(function(t){var sp=document.createElement('span');sp.className='bb-tag';sp.textContent=t;tags.appendChild(sp);});detail.appendChild(tags);
+      var h=document.createElement('h4');h.textContent=s.name;detail.appendChild(h);
+      var p1=document.createElement('p');var b1=document.createElement('strong');b1.textContent='Why: ';p1.appendChild(b1);p1.appendChild(document.createTextNode(s.why));detail.appendChild(p1);
+      var p2=document.createElement('p');var b2=document.createElement('strong');b2.textContent='Interpretation: ';p2.appendChild(b2);p2.appendChild(document.createTextNode(s.use));detail.appendChild(p2);
     }
     setSymptom(0);
   })();
 
-  // ── Accordion ──
-  document.querySelectorAll('.accord-trigger').forEach(function(t) {
-    t.addEventListener('click', function() {
-      var item = t.closest('.accord-item');
-      var open = item.classList.contains('open');
-      document.querySelectorAll('.accord-item').forEach(function(a) { a.classList.remove('open'); });
-      if (!open) item.classList.add('open');
-    });
-  });
+  // Accordion
+  document.querySelectorAll('.accord-trigger').forEach(function(t){t.addEventListener('click',function(){var item=t.closest('.accord-item'),open=item.classList.contains('open');document.querySelectorAll('.accord-item').forEach(function(a){a.classList.remove('open');});if(!open)item.classList.add('open');});});
 </script>
-
 </body>
 </html>
