@@ -1,0 +1,345 @@
+模块分析报告
+================================================================================
+
+基于各阶段模块节点构成和流动的详细分析
+--------------------------------------------------------------------------------
+
+## 早期阶段 (Early Phase)
+
+### 模块0 - 情绪调节模块 (Emotional Regulation) - EMO
+节点数量: 8
+主要节点: 
+  - Adaptability to Change (适应性变化)
+  - Stability & Calmness (稳定性与平静)
+  - Self Control & Impulsivity (自我控制与冲动)
+  - Emotional Resilience (情绪弹性)
+  - Decision-making & Risk-taking (决策与风险承担)
+  - Emotional Control (情绪控制)
+  - Aggression Towards Others (对他人的攻击性)
+  - Anger & Irritability (愤怒与易怒)
+
+### 模块1 - 自我认知模块 (Self Perception) - SPF
+节点数量: 4
+主要节点:
+  - Self Worth & Confidence (自我价值与自信)
+  - Appetite Regulation (食欲调节)
+  - Self-Image (自我形象)
+  - Guilt & Blame (内疚与责备)
+
+### 模块2 - 压力症状模块 (Stress Response) - STR
+节点数量: 18
+主要节点:
+  - Sleep Quality (睡眠质量)
+  - Restlessness & Hyperactivity (不安与多动)
+  - Fear & Anxiety (恐惧与焦虑)
+  - Unwanted, Strange or Obsessive Thoughts (不想要的、奇怪或强迫性思想)
+  - Mood Swings (情绪波动)
+  - Sense of being detached from reality (与现实脱节感)
+  - Nightmares (噩梦)
+  - Addictions (成瘾)
+  - Suicidal Thoughts or Intentions (自杀想法或意图)
+  - Feelings of Sadness, Distress or Hopelessness (悲伤、痛苦或绝望感)
+
+### 模块3 - 认知与社交功能模块 (Cognitive & Social Function) - CSF
+节点数量: 17
+主要节点:
+  - Creativity & Problem Solving (创造力与问题解决)
+  - Drive & Motivation (驱动力与动机)
+  - Ability to Learn (学习能力)
+  - Coordination (协调能力)
+  - Relationships with others (与他人的关系)
+  - Planning & Organisation (计划与组织)
+  - Physical Intimacy (身体亲密)
+  - Speech & Language (言语与语言)
+  - Memory (记忆)
+  - Social interactions & Cooperation (社交互动与合作)
+
+## 第一波 (First Wave)
+
+### 模块0 - 情绪调节模块 (Emotional Regulation) - EMO
+节点数量: 8
+主要节点: 
+  - Adaptability to Change (适应性变化)
+  - Stability & Calmness (稳定性与平静)
+  - Self Control & Impulsivity (自我控制与冲动)
+  - Emotional Resilience (情绪弹性)
+  - Emotional Control (情绪控制)
+  - Aggression Towards Others (对他人的攻击性)
+  - Mood Swings (情绪波动)
+  - Anger & Irritability (愤怒与易怒)
+
+### 模块1 - 自我认知模块 (Self Perception) - SPF
+节点数量: 3
+主要节点:
+  - Self Worth & Confidence (自我价值与自信)
+  - Self-Image (自我形象)
+  - Outlook & Optimism (展望与乐观)
+
+### 模块2 - 认知与社交功能模块 (Cognitive & Social Function) - CSF
+节点数量: 13
+主要节点:
+  - Creativity & Problem Solving (创造力与问题解决)
+  - Ability to Learn (学习能力)
+  - Coordination (协调能力)
+  - Relationships with others (与他人的关系)
+  - Physical Intimacy (身体亲密)
+  - Speech & Language (言语与语言)
+  - Memory (记忆)
+  - Social interactions & Cooperation (社交互动与合作)
+  - Decision-making & Risk-taking (决策与风险承担)
+
+### 模块3 - 生理功能模块 (Physiological Function) - SPF
+节点数量: 6
+主要节点:
+  - Drive & Motivation (驱动力与动机)
+  - Sleep Quality (睡眠质量)
+  - Planning & Organisation (计划与组织)
+  - Energy Level (能量水平)
+  - Focus & Concentration (专注与集中)
+  - Appetite Regulation (食欲调节)
+
+### 模块4 - 压力症状模块 (Stress Response) - STR
+节点数量: 17
+主要节点:
+  - Restlessness & Hyperactivity (不安与多动)
+  - Fear & Anxiety (恐惧与焦虑)
+  - Susceptibility to Infections (易感染性)
+  - Avoidance & Withdrawal (回避与退缩)
+  - Unwanted, Strange or Obsessive Thoughts (不想要的、奇怪或强迫性思想)
+  - Sense of being detached from reality (与现实脱节感)
+  - Nightmares (噩梦)
+  - Addictions (成瘾)
+  - Suicidal Thoughts or Intentions (自杀想法或意图)
+
+## Omicron阶段
+
+### 模块0 - 情绪调节模块 (Emotional Regulation) - EMO
+节点数量: 7
+主要节点: 
+  - Adaptability to Change (适应性变化)
+  - Stability & Calmness (稳定性与平静)
+  - Self Control & Impulsivity (自我控制与冲动)
+  - Emotional Resilience (情绪弹性)
+  - Emotional Control (情绪控制)
+  - Aggression Towards Others (对他人的攻击性)
+  - Anger & Irritability (愤怒与易怒)
+
+### 模块1 - 自我认知与生理功能模块 (Self Perception & Physiological Function) - SPF
+节点数量: 9
+主要节点:
+  - Self Worth & Confidence (自我价值与自信)
+  - Drive & Motivation (驱动力与动机)
+  - Sleep Quality (睡眠质量)
+  - Planning & Organisation (计划与组织)
+  - Energy Level (能量水平)
+  - Focus & Concentration (专注与集中)
+  - Appetite Regulation (食欲调节)
+  - Self-Image (自我形象)
+  - Outlook & Optimism (展望与乐观)
+
+### 模块2 - 认知与社交功能模块 (Cognitive & Social Function) - CSF
+节点数量: 13
+主要节点:
+  - Creativity & Problem Solving (创造力与问题解决)
+  - Ability to Learn (学习能力)
+  - Coordination (协调能力)
+  - Relationships with others (与他人的关系)
+  - Physical Intimacy (身体亲密)
+  - Speech & Language (言语与语言)
+  - Memory (记忆)
+  - Social interactions & Cooperation (社交互动与合作)
+  - Decision-making & Risk-taking (决策与风险承担)
+
+### 模块3 - 压力症状模块 (Stress Response) - STR
+节点数量: 18
+主要节点:
+  - Restlessness & Hyperactivity (不安与多动)
+  - Fear & Anxiety (恐惧与焦虑)
+  - Susceptibility to Infections (易感染性)
+  - Avoidance & Withdrawal (回避与退缩)
+  - Unwanted, Strange or Obsessive Thoughts (不想要的、奇怪或强迫性思想)
+  - Mood Swings (情绪波动)
+  - Sense of being detached from reality (与现实脱节感)
+  - Nightmares (噩梦)
+  - Addictions (成瘾)
+  - Suicidal Thoughts or Intentions (自杀想法或意图)
+
+## Omicron后阶段 (Post Omicron)
+
+### 模块0 - 情绪调节模块 (Emotional Regulation) - EMO
+节点数量: 6
+主要节点: 
+  - Adaptability to Change (适应性变化)
+  - Stability & Calmness (稳定性与平静)
+  - Self Control & Impulsivity (自我控制与冲动)
+  - Emotional Resilience (情绪弹性)
+  - Decision-making & Risk-taking (决策与风险承担)
+  - Emotional Control (情绪控制)
+
+### 模块1 - 认知与社交功能模块 (Cognitive & Social Function) - CSF
+节点数量: 12
+主要节点:
+  - Creativity & Problem Solving (创造力与问题解决)
+  - Ability to Learn (学习能力)
+  - Coordination (协调能力)
+  - Relationships with others (与他人的关系)
+  - Physical Intimacy (身体亲密)
+  - Speech & Language (言语与语言)
+  - Memory (记忆)
+  - Social interactions & Cooperation (社交互动与合作)
+  - Curiosity, Interest & Enthusiasm (好奇心、兴趣与热情)
+  - Empathy (同理心)
+
+### 模块2 - 压力症状模块 (Stress Response) - STR
+节点数量: 20
+主要节点:
+  - Restlessness & Hyperactivity (不安与多动)
+  - Fear & Anxiety (恐惧与焦虑)
+  - Susceptibility to Infections (易感染性)
+  - Aggression Towards Others (对他人的攻击性)
+  - Avoidance & Withdrawal (回避与退缩)
+  - Unwanted, Strange or Obsessive Thoughts (不想要的、奇怪或强迫性思想)
+  - Mood Swings (情绪波动)
+  - Sense of being detached from reality (与现实脱节感)
+  - Nightmares (噩梦)
+  - Addictions (成瘾)
+  - Anger & Irritability (愤怒与易怒)
+  - Suicidal Thoughts or Intentions (自杀想法或意图)
+
+### 模块3 - 自我认知与生理功能模块 (Self Perception & Physiological Function) - SPF
+节点数量: 9
+主要节点:
+  - Self Worth & Confidence (自我价值与自信)
+  - Drive & Motivation (驱动力与动机)
+  - Sleep Quality (睡眠质量)
+  - Planning & Organisation (计划与组织)
+  - Energy Level (能量水平)
+  - Focus & Concentration (专注与集中)
+  - Appetite Regulation (食欲调节)
+  - Self-Image (自我形象)
+  - Outlook & Optimism (展望与乐观)
+
+## 第二波 (Second Wave)
+
+### 模块0 - 情绪调节模块 (Emotional Regulation) - EMO
+节点数量: 8
+主要节点: 
+  - Adaptability to Change (适应性变化)
+  - Stability & Calmness (稳定性与平静)
+  - Self Control & Impulsivity (自我控制与冲动)
+  - Emotional Resilience (情绪弹性)
+  - Decision-making & Risk-taking (决策与风险承担)
+  - Emotional Control (情绪控制)
+  - Aggression Towards Others (对他人的攻击性)
+  - Anger & Irritability (愤怒与易怒)
+
+### 模块1 - 自我认知与生理功能模块 (Self Perception & Physiological Function) - SPF
+节点数量: 11
+主要节点:
+  - Self Worth & Confidence (自我价值与自信)
+  - Creativity & Problem Solving (创造力与问题解决)
+  - Drive & Motivation (驱动力与动机)
+  - Sleep Quality (睡眠质量)
+  - Planning & Organisation (计划与组织)
+  - Curiosity, Interest & Enthusiasm (好奇心、兴趣与热情)
+  - Energy Level (能量水平)
+  - Focus & Concentration (专注与集中)
+  - Appetite Regulation (食欲调节)
+  - Self-Image (自我形象)
+  - Outlook & Optimism (展望与乐观)
+
+### 模块2 - 认知与社交功能模块 (Cognitive & Social Function) - CSF
+节点数量: 11
+主要节点:
+  - Ability to Learn (学习能力)
+  - Coordination (协调能力)
+  - Relationships with others (与他人的关系)
+  - Physical Intimacy (身体亲密)
+  - Speech & Language (言语与语言)
+  - Memory (记忆)
+  - Social interactions & Cooperation (社交互动与合作)
+  - Empathy (同理心)
+  - Sensory Sensitivity (感官敏感性)
+  - Selective Attention (选择性注意)
+  - Confusion or Slowed Thinking (混乱或思维迟缓)
+
+### 模块3 - 压力症状模块 (Stress Response) - STR
+节点数量: 17
+主要节点:
+  - Restlessness & Hyperactivity (不安与多动)
+  - Fear & Anxiety (恐惧与焦虑)
+  - Susceptibility to Infections (易感染性)
+  - Avoidance & Withdrawal (回避与退缩)
+  - Unwanted, Strange or Obsessive Thoughts (不想要的、奇怪或强迫性思想)
+  - Mood Swings (情绪波动)
+  - Sense of being detached from reality (与现实脱节感)
+  - Nightmares (噩梦)
+  - Addictions (成瘾)
+  - Suicidal Thoughts or Intentions (自杀想法或意图)
+  - Experience of Pain (疼痛体验)
+
+================================================================================
+
+模块间节点流动分析
+--------------------------------------------------------------------------------
+
+## 早期阶段 -> 第一波
+
+- 情绪调节模块 (EMO) 保持稳定，7个节点保持在同一模块
+- 自我认知模块 (SPF) 中2个节点保持稳定
+- 认知与社交功能模块 (CSF) 中12个节点流向第一波的认知与社交功能模块
+- 压力症状模块 (STR) 中16个节点流向第一波的压力症状模块
+
+## 第一波 -> Omicron阶段
+
+- 情绪调节模块 (EMO) 保持稳定，7个节点保持在同一模块
+- 自我认知模块 (SPF) 中3个节点保持稳定
+- 认知与社交功能模块 (CSF) 中13个节点保持稳定
+- 生理功能模块 (SPF) 中6个节点流向Omicron的自我认知与生理功能模块
+- 压力症状模块 (STR) 中17个节点流向Omicron的压力症状模块
+
+## Omicron阶段 -> Omicron后阶段
+
+- 情绪调节模块 (EMO) 中5个节点保持稳定
+- 自我认知与生理功能模块 (SPF) 中9个节点流向Omicron后的自我认知与生理功能模块
+- 认知与社交功能模块 (CSF) 中12个节点流向Omicron后的认知与社交功能模块
+- 压力症状模块 (STR) 中18个节点流向Omicron后的压力症状模块
+
+## Omicron后阶段 -> 第二波
+
+- 情绪调节模块 (EMO) 中6个节点保持稳定
+- 自我认知与生理功能模块 (SPF) 中9个节点流向第二波的自我认知与生理功能模块
+- 认知与社交功能模块 (CSF) 中10个节点流向第二波的认知与社交功能模块
+- 压力症状模块 (STR) 中17个节点流向第二波的压力症状模块
+
+================================================================================
+
+统一模块命名建议
+--------------------------------------------------------------------------------
+
+基于各阶段模块的节点构成和流动分析，建议采用以下统一的模块命名方案：
+
+1. **Module 0 - Emotional Regulation (情绪调节模块) - EMO**
+   - 包含情绪控制、适应性、稳定性、自我控制等节点
+   - 这个模块在所有阶段都保持相对稳定
+
+2. **Module 1 - Self Perception & Physiological Function (自我认知与生理功能模块) - SPF**
+   - 包含自我价值、自信、自我形象、乐观、睡眠质量、食欲调节等
+   - 这个模块在各阶段有一些变化，但核心节点保持稳定
+
+3. **Module 2 - Cognitive & Social Function (认知与社交功能模块) - CSF**
+   - 包含创造力、问题解决、学习能力、记忆、语言、社交互动等
+   - 这个模块在不同阶段有所变化，但主要功能相似
+
+4. **Module 3/4 - Stress Response (压力症状模块) - STR**
+   - 包含焦虑、恐惧、抑郁、强迫思维、创伤等
+   - 这个模块在大多数阶段都存在
+
+这种命名方案可以保持跨阶段的一致性，同时反映各模块的主要功能。三字母缩写（EMO、SPF、CSF、STR）简洁明了，便于在可视化和报告中使用。
+
+| 统一模块名称                                   | 三字母缩写 | 备注                                       |
+|----------------------------------------------|------------|-------------------------------------------|
+| Emotional Regulation (情绪调节模块)            | EMO        | 在所有阶段都相对稳定                        |
+| Self Perception & Physiological Function (自我认知与生理功能模块) | SPF | 包含自我认知和生理功能两个方面 |
+| Cognitive & Social Function (认知与社交功能模块) | CSF       | 包含认知能力和社交功能                      |
+| Stress Response (压力症状模块)                 | STR        | 包含各种压力相关症状                        |
