@@ -181,7 +181,6 @@ const backboneFigureUrl = `${normalizedBaseUrl}figs/backbone.svg`;
 const macroContextRightFigureUrl = `${normalizedBaseUrl}figs/marco%20policy.svg`;
 const methodsPipelinePngUrl = `${normalizedBaseUrl}figs/fig1-600dpi.png`;
 const robustnessFigureUrl = `${normalizedBaseUrl}figs/robustness.svg`;
-const robustnessMainPyUrl = 'https://github.com/realfty/covid-mcn/blob/main/main.py';
 const domainColorMap: Record<string, string> = {
   STR: '#CC79A7',
   EMO: '#E69F00',
@@ -773,7 +772,7 @@ const backboneNodesForView = backboneNodeDefs.map((node) => {
           <img src={robustnessFigureUrl} alt="Robustness composite figure" loading="lazy" />
           <div class="fig-cap">Robustness overview. Panels A–B show bootstrap distributions for edge counts and exact MDS-set counts in representative bookend phases (Early and Post-Omicron). Panel C shows case-dropping stability for node strength, AMCS, and ACF. Panels D–E summarize MDS size and module-count distributions across all phases.</div>
           <div class="rob-actions">
-            <a class="rob-supp-btn" href={robustnessMainPyUrl} target="_blank" rel="noopener noreferrer">main.py：看完整鲁棒性结果与分析</a>
+            <a class="rob-supp-btn" href={supplementaryPdfUrl} target="_blank" rel="noopener noreferrer">Open full supplementary PDF</a>
           </div>
         </div>
       </div>
